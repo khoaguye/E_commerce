@@ -1,12 +1,49 @@
-import React from 'react'
-import Navbar from '../Components/Navbar'
+import React, { useEffect, useState } from "react";
+import { BsWindowSidebar } from "react-icons/bs";
+import Categories_bar from "../Components/Categories_bar";
+
+import Menu from "../Components/Menu";
+import Navbar from "../Components/Navbar";
+import Product from "../Components/Product";
 
 function Home() {
+  const[windowSize, setWindowSize] = useState({
+    width: undefined,
+    height: undefined
+  })
+  const [isMobile, setIsMobile]= useState(false)
+  useEffect(()=>{
+    const handleSize= ()=>{
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight
+      })
+    }
+    window.addEventListener("resize", handleSize);
+    handleSize();
+    return () =>window.removeEventListener("resize", handleSize)
+  },[])
+  useEffect(()=>{
+    console.log(windowSize)
+    if(windowSize.width < 500){
+      setIsMobile(true)
+    }else{
+      setIsMobile(false)
+    }
+  },[windowSize])
   return (
-    <div>
-        <Navbar/>
-    </div>
-  )
+    <div className="px-[2em]  md:px-[6em]">
+      <div className="flex">
+        <Navbar />
+        <div className="hidden md:block">
+          <Menu />
+        </div>
+      </div>
+      <Categories_bar isMobile ={false} />
+      <Product/>
+      
+    </div> 
+  );
 }
 
-export default Home
+export default Home;

@@ -23,14 +23,11 @@ function Filter_mobile() {
     );
   }
   return (
-    <div className="mt-[15em] ">
-      <div className="border border-b-black p-2 text-right">
-        <p className="r-0 mr-2">Close</p>
-      </div>
+    <div className="mt-[15em] md:mt-2 flex flex-col md:gap-7 gap-4 border md:border-none">
       <div className="mt-4 px-4">
         <h2 className="text-[1.5rem] font-bold text-green-900">Categories</h2>
         <div className="mt-2 grid grid-cols-3 gap-2">
-          <div className="bg-light-grey rounded-full p-2">
+          <div className="bg-light-grey rounded-full p-2 ">
             <p> Technologies </p>
           </div>
           <div className="bg-light-grey rounded-full p-2">
@@ -69,10 +66,10 @@ function Filter_mobile() {
             id="price"
             name="price"
             min="0"
-            max="100"
+            max="500"
             value={price}
             onChange={handlePriceChange}
-            className="w-[100%] text-green-900"
+            className="w-[100%] accent-green-900"
           />
           <label
             htmlFor="price"
@@ -95,7 +92,7 @@ function Filter_mobile() {
               <label className="inline-flex items-center">
                 <input
                   type="checkbox"
-                  className="form-checkbox h-5 w-5 text-green-900"
+                  className="form-checkbox h-5 w-5 accent-green-900"
                   checked={isChecked}
                   id={id}
                   onChange={handleCheckboxChange}
@@ -106,9 +103,9 @@ function Filter_mobile() {
           ))}
         </div>
       </div>
-      <div className="w-[100%] bg-red-700 mt-4">
-      <button className=" w-[80%] mx-auto bg-green-900 text-white  px-5 py-3 ">Reset Filter</button>
-      </div>
+      
+      <button className=" w-[100%] mt-4 bg-green-900 text-white  px-5 py-3 text-[1.25rem] tracking-wider">RESET FILTER</button>
+      
     </div>
   );
 }

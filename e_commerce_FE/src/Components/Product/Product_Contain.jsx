@@ -2,7 +2,9 @@ import React from 'react'
 
 function Product_Contain() {
   return (
-    <div>Product_Contain</div>
+    <div >
+        product contain
+    </div>
   )
 }
 

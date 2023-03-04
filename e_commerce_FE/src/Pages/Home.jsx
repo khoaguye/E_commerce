@@ -33,7 +33,8 @@ function Home() {
     }
   },[windowSize])
   return (
-    <div className="px-[2em]  md:px-[6em]">
+    <div>
+    <div className="px-[2em] md:px-[6em]">
       <div className="flex">
         <Navbar />
         <div className="hidden md:block">
@@ -42,8 +43,10 @@ function Home() {
       </div>
       <Categories_bar isMobile ={false} />
       <Product/>
-      <Footer/>
+    
     </div> 
+    <Footer/>
+    </div>
   );
 }
 

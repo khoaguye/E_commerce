@@ -11,7 +11,7 @@ function Header() {
     }
   return (
   
-    <div className=' md:h-[80vh] w-[100%]'>
+    <div className='w-[100%]'>
     <div className='md:mt-[1em] mt-[2em]  flex justify-between '>
         <h1 className="text-green-900 md:text-[1.5rem]"><span className=' md:text-[2.5rem] text-[1.75rem] font-bold'>Shop</span> for <span className='md:text-[2.5rem] text-[1.75rem] font-bold'>You</span></h1>   
         {

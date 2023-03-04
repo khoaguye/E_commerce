@@ -2,8 +2,11 @@ import logo from "./logo.svg";
 import "./App.css";
 import Home from "./Pages/Home";
 import Footer from "./Components/Footer";
+import { BrowserRouter } from "react-router-dom";
+import Pages from "./Pages/Pages";
 function App() {
   return (
+    <BrowserRouter>
     <div className="App">
       <div className="hidden md:block w-full bg-green-900 text-white md:flex justify-between px-[6em] py-4">
         <p>+1(210)122-6789</p>
@@ -13,9 +16,10 @@ function App() {
         </p>
         <p> More information</p>
       </div>
-      <Home />
-      <Footer/>
+      <Pages />
+ 
     </div>
+    </BrowserRouter>
   );
 }
 

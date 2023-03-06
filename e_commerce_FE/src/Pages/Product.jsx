@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "../Components/Header";
-import Filter_mobile from "../Components/Product/Filter_mobile";
+import Filter_bar from "../Components/Product/Filter_bar";
 import Product_Contain from "../Components/Product/Product_Contain";
-import Sidebar from "../Components/Product/Sidebar";
 import {AiOutlineDown} from 'react-icons/ai'
 
 function Product() {
@@ -51,7 +50,7 @@ function Product() {
         {!isMobile ? (
           <div className="grid grid-cols-4 ">
             <div>
-              <Filter_mobile />
+              <Filter_bar />
             </div>
             <div className="col-span-3 ">
               <Product_Contain />
@@ -62,7 +61,7 @@ function Product() {
             <div>
               <Product_Contain  />
             </div>
-            {filterMobile && <Filter_mobile/>}
+            {filterMobile && <Filter_bar/>}
           </div>
         )}
       </div>

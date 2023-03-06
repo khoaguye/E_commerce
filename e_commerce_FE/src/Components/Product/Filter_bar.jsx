@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Filter_mobile() {
+function Filter_bar() {
   const [price, setPrice] = useState(50);
   const [checkboxes, setCheckboxes] = useState([
     { id: "checkbox1", label: "Product A - Z", isChecked: false },
@@ -110,4 +110,4 @@ function Filter_mobile() {
   );
 }
 
-export default Filter_mobile;
+export default Filter_bar;

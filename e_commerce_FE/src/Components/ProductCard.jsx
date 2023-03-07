@@ -8,13 +8,14 @@ function ProductCard(props) {
         <img src={props.image} className='w-[100%] h-[50%]'/>
          <h1 className='text-[1.5rem] font-bold'>{props.name}</h1>
          <p className='font-light'>{props.description}</p>
+         <p className='font-bold'>{props.prices}</p>
          <div className='flex '>
             <AiFillStar className='text-green-700'/>
             <AiFillStar className='text-green-700' />
             <AiFillStar className='text-green-700'/>
             <AiFillStar className='text-green-700'/>
          </div>
-         <button className="rounded-full px-4 py-2 border-2 border-black"> Add to cart</button>
+         <button className="rounded-full font-bold px-4 py-2 border-2 border-black bg-white hover:bg-green-900 hover:transition-duration-1000 hover:text-white"> Add to Cart</button>
     </div>
     
   )

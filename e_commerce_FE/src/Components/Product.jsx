@@ -10,36 +10,42 @@ function Product() {
                 image = {head}
                 name = "Sony Headphone MX3000"
                 description = "Premium bone conduction noise cancellation bluetooth headphone "
+                prices= "$300"
            />
             
             <ProductCard
                 image = {head}
                 name = "Sony Headphone MX3000"
                 description = "Premium bone conduction noise cancellation bluetooth headphone "
+                prices= "$300"
            />
 
         <ProductCard
                 image = {head}
                 name = "Sony Headphone MX3000"
                 description = "Premium bone conduction noise cancellation bluetooth headphone "
+                prices= "$300"
            />
 
         <ProductCard
                 image = {head}
                 name = "Sony Headphone MX3000"
                 description = "Premium bone conduction noise cancellation bluetooth headphone "
+                prices= "$300"
            />
 
         <ProductCard
                 image = {head}
                 name = "Sony Headphone MX3000"
                 description = "Premium bone conduction noise cancellation bluetooth headphone "
+                prices= "$300"
            />
 
         <ProductCard
                 image = {head}
                 name = "Sony Headphone MX3000"
                 description = "Premium bone conduction noise cancellation bluetooth headphone "
+                prices= "$300"
            />
 
 

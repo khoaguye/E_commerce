@@ -47,7 +47,7 @@ function Product() {
       </div>
       <div>
         {" "}
-        {!isMobile ? (
+        {!isMobile   ? (
           <div className="grid grid-cols-4 ">
             <div>
               <Filter_bar />
@@ -58,10 +58,22 @@ function Product() {
           </div>
         ) : (
           <div >
-            <div>
+          {filterMobile ? 
+            <div class="relative">
+
+  <Product_Contain  />
+ 
+  <div class="absolute inset-0 bg-black opacity-20"></div>
+</div>
+          
+          :  <div>
               <Product_Contain  />
+            </div>}
+            {filterMobile && 
+              <div className="fixed bottom-0 left-0 w-full z-10 bg-white">
+            <Filter_bar/>
             </div>
-            {filterMobile && <Filter_bar/>}
+            }
           </div>
         )}
       </div>

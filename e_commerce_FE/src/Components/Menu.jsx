@@ -7,7 +7,7 @@ function Menu() {
             <li className ="mb-4 cursor-pointer hover:scale-105 ease-in-out duration-300">Categories</li>
             <li className ="mb-4 cursor-pointer hover:scale-105 ease-in-out duration-300">Deals</li>
             <li className ="mb-4 cursor-pointer hover:scale-105 ease-in-out duration-300">Your wish list</li>
-            <li className ="mb-4 cursor-pointer hover:scale-105 ease-in-out duration-300">Account</li>
+            <li className ="mb-4 cursor-pointer hover:scale-105 ease-in-out duration-300">Sign In</li>
         </ul>
     </div>
   )

@@ -23,7 +23,7 @@ function Filter_bar() {
     );
   }
   return (
-    <div className="mt-[15em] md:mt-2 flex flex-col md:gap-7 gap-4 border md:border-none">
+    <div className=" md:mt-2 flex flex-col md:gap-7 gap-4 border md:border-none">
       <div className="mt-4 px-4">
         <h2 className="text-[1.5rem] font-bold text-green-900">Categories</h2>
         <div className="mt-2 grid grid-cols-3 gap-2">

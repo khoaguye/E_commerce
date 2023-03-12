@@ -1,57 +1,44 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import head from './headphone.png'
 import ProductCard from './ProductCard'
+import axios from 'axios'
 function Product() {
+
+const [content, setContent] = useState([]);     
+  useEffect(() => {
+     async function fetchProductContent() {
+       try {
+         const response = await axios.get('/product/productContent');
+     //     const contentArray = Object.values(response.data);
+          console.log(response.data.products)
+         setContent(response.data.products);
+        
+       } catch (error) {
+         console.error(error);
+       }
+     }
+ 
+     fetchProductContent();
+    
+   }, []);
+
+   console.log(content)
   return (
     <div className="mt-4">
         <h1 className='text-green-900 text-[1.5rem] font-bold'>Happy Shopping!!</h1>
-        <div className="mt-4 grid grid-cols-1 md:p-10 p-6 md:grid-cols-3 gap-6 mx-auto">
+           
+        <div className="mt-4 grid grid-cols-1 md:p-10 p-6 md:grid-cols-4 gap-4 mx-auto ">
+        {content.map((items) => ( 
             <ProductCard
-                image = {head}
-                name = "Sony Headphone MX3000"
-                description = "Premium bone conduction noise cancellation bluetooth headphone "
-                prices= "$300"
+                key = {items.id}
+                image = {items.images[0]}
+                name = {items.title}
+                description = {items.description}
+                prices= {items.price}
            />
-            
-            <ProductCard
-                image = {head}
-                name = "Sony Headphone MX3000"
-                description = "Premium bone conduction noise cancellation bluetooth headphone "
-                prices= "$300"
-           />
-
-        <ProductCard
-                image = {head}
-                name = "Sony Headphone MX3000"
-                description = "Premium bone conduction noise cancellation bluetooth headphone "
-                prices= "$300"
-           />
-
-        <ProductCard
-                image = {head}
-                name = "Sony Headphone MX3000"
-                description = "Premium bone conduction noise cancellation bluetooth headphone "
-                prices= "$300"
-           />
-
-        <ProductCard
-                image = {head}
-                name = "Sony Headphone MX3000"
-                description = "Premium bone conduction noise cancellation bluetooth headphone "
-                prices= "$300"
-           />
-
-        <ProductCard
-                image = {head}
-                name = "Sony Headphone MX3000"
-                description = "Premium bone conduction noise cancellation bluetooth headphone "
-                prices= "$300"
-           />
-
-
-
-
+           ))} 
         </div>
+    
     </div>
   )
 }

@@ -13,6 +13,7 @@ function Home() {
     height: undefined
   })
   const [isMobile, setIsMobile]= useState(false)
+
   useEffect(()=>{
     const handleSize= ()=>{
       setWindowSize({
@@ -43,7 +44,6 @@ function Home() {
       </div>
       <Categories_bar isMobile ={false} />
       <Product/>
-    
     </div> 
     <Footer/>
     </div>

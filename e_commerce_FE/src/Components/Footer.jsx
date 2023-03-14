@@ -2,7 +2,7 @@ import React from 'react'
 
 function Footer() {
   return (
-    <div>
+    <div className=" w-[100%] bottom-0 ">
           <footer className="p-4 bg-green-900  shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
         <span className="text-sm text-white sm:text-center dark:text-gray-400">
           © 2023{" "}

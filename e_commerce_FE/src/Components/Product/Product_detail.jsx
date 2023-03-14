@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import {
   AiFillStar,
   AiOutlineHeart,
@@ -9,22 +9,41 @@ import {
 import {FaTruck, FaClipboard} from "react-icons/fa"
 
 import a from "../headphone.png";
+import { useParams } from "react-router-dom";
 function Product_detail() {
   const [count, setCount] = useState(0);
+  const [content, setContent]= useState({})
+  const [image, setImage] = useState([]);
+  const params = useParams();
+  useEffect(() => {
+    async function fetchProductContent() {
+      try {
+        const response = await axios.get(`/product/productDetail/${params.id}`);
+         console.log(response.data)
+        setContent(response.data);
+        setImage(response.data.images)
+      } catch (error) {
+        console.error(error);
+      }
+    }
 
+    fetchProductContent();
+   
+  }, [params.id]);
+console.log(content)
   return (
     <div className="mt-4">
+  
       <div className="flex flex-col md:flex-row gap-4">
-
-      <div className="order-2 md:order-1 ">
-          <img src={a} />
+     
+      <div className="order-2 md:order-1 md:mt-[2em] ">
+          <img src={image[0]} />
         </div>
 
-        <div className="order-1 md:order-2 md:hidden">
-          <h1 className="text-[1.5em]  font-bold">MX4000 Sony Headphones</h1>
+        <div className="order-1 md:order-2 md:hidden mt-4 md:mt-0">
+          <h1 className="text-[1.5em]  font-bold">{content.title}</h1>
           <p className="font-light mt-2">
-            A perfect balance of exhirarating high-fidenlity audio and the
-            effortless maigc of Sony MX4000
+            {content.description}
           </p>
           <div className="flex mt-2 ">
             <AiFillStar className="text-green-700" />
@@ -34,12 +53,11 @@ function Product_detail() {
           </div>
         </div>
         
-        <div className="order-3 mt-6">
+        <div className="order-3 mt-6 md:ml-[4em]">
         <div className="hidden md:block">
-          <h1 className="text-[2.5em] font-bold">MX4000 Sony Headphones</h1>
+          <h1 className="text-[2.5em] font-bold">{content.title}</h1>
           <p className="font-light mt-2">
-            A perfect balance of exhirarating high-fidenlity audio and the
-            effortless maigc of Sony MX4000
+            {content.description}
           </p>
           <div className="flex mt-2 md:mt-6 ">
             <AiFillStar className="text-green-700" />
@@ -49,7 +67,7 @@ function Product_detail() {
           </div>
         </div>
 
-          <h2 className="text-[1.45rem] font-semibold md:mt-6 ">$300.00</h2>
+          <h2 className="text-[1.45rem] font-semibold md:mt-6 ">${content.price}</h2>
           <div className="flex gap-4 mt-3 md:mt-5">
             <AiFillPlusCircle
               size={"25px"}
@@ -98,6 +116,7 @@ function Product_detail() {
         </div>
       </div>
     </div>
+    
   );
 }
 

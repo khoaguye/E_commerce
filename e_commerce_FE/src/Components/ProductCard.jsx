@@ -6,7 +6,7 @@ function ProductCard(props) {
     <div className="w-[100%] md:w-[90%] p-4 h-full object-cover flex flex-col gap-4 md:gap-2 relative bg-white rounded-lg shadow-lg">
       <AiOutlineHeart size={'25px'} className="absolute top-2 right-4" />
       <div className='w-full h-full object-cover'>
-        <img src={props.image} className='w-[100%]' />
+        <img src={props.image} className='w-[100%]'/>
       </div>
       <div>
         <h1 className='text-[1.5rem] font-bold w-full h-full object-cover'>{props.name}</h1>

@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from 'react'
-import head from './headphone.png'
+import React, {useState, useEffect} from 'react'   
 import ProductCard from './ProductCard'
 import axios from 'axios'
 function Product() {
@@ -9,7 +8,6 @@ const [content, setContent] = useState([]);
      async function fetchProductContent() {
        try {
          const response = await axios.get('/product/productContent');
-     //     const contentArray = Object.values(response.data);
           console.log(response.data.products)
          setContent(response.data.products);
         
@@ -27,7 +25,7 @@ const [content, setContent] = useState([]);
     <div className="mt-4">
         <h1 className='text-green-900 text-[1.5rem] font-bold'>Happy Shopping!!</h1>
            
-        <div className="mt-4 grid grid-cols-1 md:p-10 p-6 md:grid-cols-4 gap-4 mx-auto ">
+        <div className="mt-4 grid grid-cols-1 md:p-10 p-6 md:grid-cols-3 xl:grid-cols-4 gap-4 mx-auto ">
         {content.map((items) => ( 
             <ProductCard
                 key = {items.id}

@@ -13,7 +13,10 @@ function Detail_product() {
       </div>
     
     </div>
+    {/* <div className='md:fixed w-[100%] bottom-0'>
     <Footer/>
+    </div> */}
+   
     </>
   )
 }

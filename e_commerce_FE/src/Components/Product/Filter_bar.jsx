@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import CategoryDropdown from "./CategoryDropdown"
 function Filter_bar() {
   const [price, setPrice] = useState(50);
   const [checkboxes, setCheckboxes] = useState([
@@ -8,6 +8,7 @@ function Filter_bar() {
     { id: "checkbox3", label: "Price Low - High", isChecked: false },
     { id: "checkbox4", label: "Price High - Low", isChecked: false },
   ]);
+  const [selectedCategory, setSelectedCategory] = useState('All Categories');
   function handlePriceChange(event) {
     setPrice(event.target.value);
   }
@@ -26,38 +27,22 @@ function Filter_bar() {
     <div className=" md:mt-2 flex flex-col md:gap-7 gap-4 border md:border-none">
       <div className="mt-4 px-4">
         <h2 className="text-[1.5rem] font-bold text-green-900">Categories</h2>
-        <div className="mt-2 grid grid-cols-3 gap-2">
-          <div className="bg-light-grey rounded-full p-2 ">
-            <p> Technologies </p>
-          </div>
-          <div className="bg-light-grey rounded-full p-2">
-            <p> Fashsions </p>
-          </div>
-          <div className="bg-light-grey rounded-full p-2">
-            <p> Furnitures</p>
-          </div>
-          <div className="bg-light-grey rounded-full p-2">
-            <p> Cosmetics </p>
-          </div>
-          <div className="bg-light-grey rounded-full p-2">
-            <p> Jewelleries </p>
-          </div>
-          <div className="bg-light-grey rounded-full p-2">
-            <p> Skincare </p>
-          </div>
-        </div>
+          <CategoryDropdown />
       </div>
-      <div className="mt-4 px-4">
+      <div className=" mt-4 px-4">
+      <hr />
+      </div>
+      <div className="mt-2 px-4">
         <h2 className="text-[1.5rem] font-bold text-green-900">Prices</h2>
         <div className=" flex space-between">
           <div className="bg-light-grey rounded-full p-2 gap-4">
             <p> Under $50 </p>
           </div>
           <div className="bg-light-grey rounded-full p-2">
-            <p> Under $200 </p>
+            <p> Under $1000 </p>
           </div>
           <div className="bg-light-grey rounded-full p-2">
-            <p> Under $500 </p>
+            <p> Under $2000 </p>
           </div>
         </div>
         <div className="w-full">
@@ -103,9 +88,9 @@ function Filter_bar() {
           ))}
         </div>
       </div>
-      
+
       <button className=" w-[100%] mt-4 bg-green-900 text-white  px-5 py-3 text-[1.25rem] tracking-wider">RESET FILTER</button>
-      
+
     </div>
   );
 }

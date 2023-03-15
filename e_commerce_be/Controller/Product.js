@@ -2,7 +2,7 @@ import axios from "axios";
 
 //Fetch 20 product for Product page
 export const allProduct = (req, res) => {
-    axios.get('https://dummyjson.com/products?limit=20&skip=10&select=title,price,description,rating,images')
+    axios.get('https://dummyjson.com/products')
       .then(response => {
         const products = response.data;
         res.json(products);
@@ -15,7 +15,7 @@ export const allProduct = (req, res) => {
 
 //Fetch six product for landing page 
 export const productContent = (req, res) => {
-    axios.get('https://dummyjson.com/products?limit=6&skip=10&select=title,price,description,rating,images')
+    axios.get('https://dummyjson.com/products?limit=8&skip=10&select=title,price,description,rating,images')
       .then(response => {
         const products = response.data;
         res.json(products);
@@ -25,6 +25,20 @@ export const productContent = (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
       });
   }
+
+  //Fetch detail product
+export const productDetail = (req, res) => {
+  const { id } = req.params;
+  axios.get(`https://dummyjson.com/products/${id}`)
+    .then(response => {
+      const products = response.data;
+      res.json(products);
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    });
+}
 
   //Fetch all the category
   export const category = (req, res) => {

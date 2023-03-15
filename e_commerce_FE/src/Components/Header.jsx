@@ -3,6 +3,7 @@ import Menu from './Menu'
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {BsFillArrowRightSquareFill} from 'react-icons/bs'
 import {ImSearch} from 'react-icons/im'
+import {TiShoppingCart} from 'react-icons/ti'
 
 function Header() {
     const [menuToggle, setMenuToggle] = useState(false)
@@ -13,7 +14,7 @@ function Header() {
   return (
   
     <div className='w-[100%]'>
-    <div className='md:mt-[1em] mt-[2em]  flex md:flex-row flex-col justify-between '>
+    <div className='md:mt-[1em] mt-[2em]  flex md:flex-row flex-col justify-between'>
       <div className="flex w-[100%] justify-between">     
          <h1 className="text-green-900 md:text-[1.5rem]"><span className=' md:text-[2.5rem] text-[1.75rem] font-bold'>Shop</span> for <span className='md:text-[2.5rem] text-[1.75rem] font-bold'>You</span></h1>   
          {
@@ -43,7 +44,10 @@ function Header() {
          <ImSearch size={'25px'}/>
         </button> 
         </div>
-        <div></div>   
+        <div className = "flex md:mt-0 mt-2">
+          <TiShoppingCart size = {"30px"} className = "mt-4 text-green-600"/>
+          <p className =" bg-green-600 rounded-full text-white   -ml-4 px-2 py-0 h-[40%]">1</p>
+          </div>   
        
          </div>
          

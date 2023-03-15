@@ -6,6 +6,8 @@ import { AiOutlineDown } from 'react-icons/ai'
 import CategoryContext from "../Components/Product/CategoryContext";
 function Product() {
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
+  const [content, setContent] = useState([]); 
+  const [subContent, setsubContent] = useState([])
   const [filterMobile, setFilterMobile] = useState(false)
   const [windowSize, setWindowSize] = useState({
     width: undefined,
@@ -37,7 +39,7 @@ function Product() {
   }
   return (
     <div className="md:px-[6em]">
-      <CategoryContext.Provider value={{ selectedCategory, setSelectedCategory }}>
+      <CategoryContext.Provider value={{ selectedCategory, setSelectedCategory, content, setContent, subContent, setsubContent }}>
         <div className="px-[2em]">
           <Header />
         </div>

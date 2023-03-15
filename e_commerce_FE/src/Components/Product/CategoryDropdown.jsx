@@ -30,10 +30,12 @@ const categories = [
 function CategoryDropdown() {
   //const [selectedCategory, setSelectedCategory] = useState('All categories');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+ // const {filterContent, setFilterContent} = useContext(CategoryContext)
   const [selectedCategoryProducts, setSelectedCategoryProducts] = useState([]);
   const { selectedCategory, setSelectedCategory } = useContext(CategoryContext);
 
   function handleCategoryClick(category) {
+   
     setSelectedCategory(category);
     setIsDropdownOpen(false);
    

@@ -1,57 +1,85 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import CategoryDropdown from "./CategoryDropdown"
+import CategoryContext from './CategoryContext'
 function Filter_bar() {
-  const [price, setPrice] = useState(50);
+  const [price, setPrice] = useState(500);
   const [checkboxes, setCheckboxes] = useState([
-    { id: "checkbox1", label: "Product A - Z", isChecked: false },
-    { id: "checkbox2", label: "Product Z - A", isChecked: false },
     { id: "checkbox3", label: "Price Low - High", isChecked: false },
     { id: "checkbox4", label: "Price High - Low", isChecked: false },
   ]);
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
+  const {content, setContent} = useContext(CategoryContext); 
+  const {subContent, setsubContent} = useContext(CategoryContext)
+  const [brand, setBrand] = useState("");
   function handlePriceChange(event) {
     setPrice(event.target.value);
   }
+  useEffect(() => {
+    setCheckboxes([
+      { id: "checkbox3", label: "Price Low - High", isChecked: false },
+      { id: "checkbox4", label: "Price High - Low", isChecked: false },
+    ]);
+  }, [content]);
 
   function handleCheckboxChange(event) {
     const clickedCheckboxId = event.target.id;
+    const sortedProduct = [...subContent]; // create a copy of subContent
+    if (clickedCheckboxId === "checkbox3") {
+      // sort by price low to high
+      sortedProduct.sort((a, b) => a.price - b.price);
+    } else if (clickedCheckboxId === "checkbox4") {
+      // sort by price high to low
+      sortedProduct.sort((a, b) => b.price - a.price);
+    }
     setCheckboxes((prevCheckboxes) =>
-      prevCheckboxes.map((checkbox) =>
-        checkbox.id === clickedCheckboxId
-          ? { ...checkbox, isChecked: event.target.checked }
-          : checkbox
-      )
-    );
+    prevCheckboxes.map((checkbox) =>
+      checkbox.id === clickedCheckboxId
+        ? { ...checkbox, isChecked: event.target.checked }
+        : { ...checkbox, isChecked: false } // uncheck other checkbox
+    )
+  );
+    setsubContent(sortedProduct);
   }
+  
+
+  function handlePriceRange() {  
+    // Apply the filter to 'content'
+    const filteredProduct = content.filter((obj) => {
+      return obj.price < price;
+    });
+  
+    // Set the filtered value back to 'content'
+    setsubContent(filteredProduct);
+   
+  }
+
+  function handleBrandFilter(event){
+    const clickedBrand = event.target.textContent;
+    const filteredProduct = content.filter((obj) => {
+      return obj.brand === clickedBrand;
+    });
+    setsubContent(filteredProduct);
+  }
+  
+
   return (
     <div className=" md:mt-2 flex flex-col md:gap-7 gap-4 border md:border-none">
       <div className="mt-4 px-4">
         <h2 className="text-[1.5rem] font-bold text-green-900">Categories</h2>
           <CategoryDropdown />
-      </div>
+      </div> 
       <div className=" mt-4 px-4">
       <hr />
       </div>
       <div className="mt-2 px-4">
         <h2 className="text-[1.5rem] font-bold text-green-900">Prices</h2>
-        <div className=" flex space-between">
-          <div className="bg-light-grey rounded-full p-2 gap-4">
-            <p> Under $50 </p>
-          </div>
-          <div className="bg-light-grey rounded-full p-2">
-            <p> Under $1000 </p>
-          </div>
-          <div className="bg-light-grey rounded-full p-2">
-            <p> Under $2000 </p>
-          </div>
-        </div>
         <div className="w-full">
           <input
             type="range"
             id="price"
             name="price"
             min="0"
-            max="500"
+            max="2000"
             value={price}
             onChange={handlePriceChange}
             className="w-[100%] accent-green-900"
@@ -62,14 +90,16 @@ function Filter_bar() {
           >
             Price: $0 - ${price}
           </label>
-          <button className="bg-light-grey px-4 py-2 rounded-full mt-1 font-bold">
+          <button 
+            className="bg-light-grey hover:bg-green-900 hover:text-white px-4 py-2 rounded-full mt-1 font-bold"
+            onClick = {handlePriceRange}  
+          >
             APPLY
           </button>
         </div>
       </div>
 
-      <div className="mt-4 px-4">
-        <h2 className="text-[1.5rem] font-bold text-green-900">Sorting</h2>
+      <div className="px-4">
 
         <div className=" grid grid-cols-2 gap-4 ">
           {checkboxes.map(({ id, label, isChecked }) => (
@@ -88,11 +118,21 @@ function Filter_bar() {
           ))}
         </div>
       </div>
+      <div className="mt-4 px-4">
+      <h2 className="text-[1.5rem] font-bold text-green-900">Brands</h2>
+      {subContent.map ((brand) => (
+        <p className= "text-gray-700 ml-1 bg-white hover:bg-light-grey" onClick ={handleBrandFilter}>{brand.brand}</p>
+      ))}
+      </div>
 
-      <button className=" w-[100%] mt-4 bg-green-900 text-white  px-5 py-3 text-[1.25rem] tracking-wider">RESET FILTER</button>
+      <button 
+        className=" w-[100%] mt-4 bg-green-900 text-white  px-5 py-3 text-[1.25rem] tracking-wider"
+      
+      >SHOW {subContent.length} items</button>
 
     </div>
   );
 }
 
 export default Filter_bar;
+ 

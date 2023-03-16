@@ -28,7 +28,7 @@ const [content, setContent] = useState([]);
         <div className="mt-4 grid grid-cols-1 md:p-10 p-6 md:grid-cols-3 xl:grid-cols-4 gap-4 mx-auto ">
         {content.map((items) => ( 
             <ProductCard
-                key = {items.id}
+                id = {items.id}
                 image = {items.images[0]}
                 name = {items.title}
                 description = {items.description}

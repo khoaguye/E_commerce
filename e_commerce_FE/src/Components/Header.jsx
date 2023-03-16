@@ -4,13 +4,23 @@ import {GiHamburgerMenu} from 'react-icons/gi'
 import {BsFillArrowRightSquareFill} from 'react-icons/bs'
 import {ImSearch} from 'react-icons/im'
 import {TiShoppingCart} from 'react-icons/ti'
-
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom'
 function Header() {
     const [menuToggle, setMenuToggle] = useState(false)
     
     function handleToggle(){
         setMenuToggle(!menuToggle)
     }
+
+    const cart = useSelector((state) => state.cart)
+const getTotalQuantity = () => {
+  let total = 0
+  cart.forEach(item => {
+    total += item.quantity
+  })
+  return total
+}
   return (
   
     <div className='w-[100%]'>
@@ -44,11 +54,14 @@ function Header() {
          <ImSearch size={'25px'}/>
         </button> 
         </div>
+        <Link to ="/cart">
         <div className = "flex md:mt-0 mt-2">
           <TiShoppingCart size = {"30px"} className = "mt-4 text-green-600"/>
-          <p className =" bg-green-600 rounded-full text-white   -ml-4 px-2 py-0 h-[40%]">1</p>
+          <p className =" bg-green-600 rounded-full text-white -ml-4 px-2 py-0 h-[40%]">
+            {getTotalQuantity() || 0}
+            </p>
           </div>   
-       
+       </Link>
          </div>
          
     </div>

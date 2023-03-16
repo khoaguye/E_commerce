@@ -7,7 +7,8 @@ import CategoryContext from './CategoryContext'
 function Product_Contain() {
      const {content, setContent} = useContext(CategoryContext);  
      const {subContent, setsubContent} = useContext(CategoryContext)
-     const { selectedCategory, setSelectedCategory } = useContext(CategoryContext);   
+     const { selectedCategory, setSelectedCategory } = useContext(CategoryContext);  
+     
      console.log(selectedCategory)
      useEffect(() => {
           async function fetchAllProducts() {
@@ -47,15 +48,15 @@ function Product_Contain() {
     <div className="mt-4 grid grid-cols-1 md:p-10 p-6 md:grid-cols-3  md:gap-10 mx-auto">
     {subContent.map((items) => ( 
      <div> 
-           <Link to = {"/product/" + items.id}>
+         
             <ProductCard
-                key = {items.id}
+                id = {items.id}
                 image = {items.images[0]}
                 name = {items.title}
                 description = {items.description}
                 prices= {items.price}
            />
-           </Link>
+     
      </div>
            ))} 
     </div>    

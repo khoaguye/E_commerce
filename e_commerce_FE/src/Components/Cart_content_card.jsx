@@ -8,7 +8,7 @@ import {
 } from "react-icons/ai";
 import { useDispatch } from 'react-redux';
 import {incrementQuantity,decrementQuantity, removeItem} from '../Redux/cartSlice';
-function Cart_content_card({id, name, image, description, prices, quantity}) {
+function Cart_content_card({id, title, img, description, price, quantity}) {
   const dispatch = useDispatch() 
 
   return (
@@ -16,14 +16,14 @@ function Cart_content_card({id, name, image, description, prices, quantity}) {
         <div className="flex gap-4 md:gap-0">
       <div className="w-[30%] h-full ml-2">
         <img
-          src={image}
+          src={img}
           alt="your-image-alt"
           className="h-full w-full md:w-[50%] object-cover"
         />
       </div>
       <div className="w-[70%] md:p-4">
-        <p className="md:text-[1.5rem] font-bold"> {name}</p>
-        <p className="font-bold text-[1.25rem] md:text-[1.5rem] mt-2 text-green-900">$ {prices}</p>
+        <p className="md:text-[1.5rem] font-bold"> {title}</p>
+        <p className="font-bold text-[1.25rem] md:text-[1.5rem] mt-2 text-green-900">$ {price}</p>
       </div>
     </div>    
         

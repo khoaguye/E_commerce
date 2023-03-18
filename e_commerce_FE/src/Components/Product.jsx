@@ -29,8 +29,8 @@ const [content, setContent] = useState([]);
         {content.map((items) => ( 
             <ProductCard
                 id = {items.id}
-                image = {items.images[0]}
-                name = {items.title}
+                img = {items.images[0]}
+                title = {items.title}
                 description = {items.description}
                 prices= {items.price}
            />

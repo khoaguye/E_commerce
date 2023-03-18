@@ -8,7 +8,7 @@ function Detail_product() {
     <div className="md:px-[6em]">
       <div className="px-[2em]">
         <Header />
-        <Product_detail/>
+        <Product_detail className="mx-auto"/>
        
       </div>
     

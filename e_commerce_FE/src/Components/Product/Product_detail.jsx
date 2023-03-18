@@ -7,11 +7,12 @@ import {
   AiFillMinusCircle,
 } from "react-icons/ai";
 import {FaTruck, FaClipboard} from "react-icons/fa"
-
-import a from "../headphone.png";
 import { useParams } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { addToCart } from "../../Redux/cartSlice";
+
 function Product_detail() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
   const [content, setContent]= useState({})
   const [image, setImage] = useState([]);
   const params = useParams();
@@ -30,14 +31,23 @@ function Product_detail() {
     fetchProductContent();
    
   }, [params.id]);
-console.log(content)
+//console.log(content)
+
+const dispatch = useDispatch() 
+const handleAddToCart = (event) => {
+  const { id, title, price, images } = content;
+  const img = images[0];
+ dispatch(addToCart({ id, title, img, price, quantity: count}));
+ console.log(content)
+ console.log(id, title, img)
+}
   return (
     <div className="mt-4">
   
       <div className="flex flex-col md:flex-row gap-4">
      
       <div className="order-2 md:order-1 md:mt-[2em] ">
-          <img src={image[0]} />
+          <img src={image[0]} alt = "product" />
         </div>
 
         <div className="order-1 md:order-2 md:hidden mt-4 md:mt-0">
@@ -92,6 +102,7 @@ console.log(content)
             <button
               class="flex-1 bg-transparent border border-green-900 text-green-900 font-bold py-2 px-4 rounded transition-colors duration-300 hover:bg-green-900 hover:text-white focus:outline-none focus:bg-green-900 focus:text-white"
               onclick="this.classList.toggle('bg-green-500'); this.classList.toggle('text-white')"
+              onClick ={handleAddToCart}
             >
               Add to Cart
             </button>

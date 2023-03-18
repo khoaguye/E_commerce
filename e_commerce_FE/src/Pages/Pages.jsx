@@ -4,6 +4,7 @@ import {Routes, Route} from 'react-router-dom'
 import Product from './Product'
 import Detail_product from './Detail_product'
 import Cart from './Cart'
+import Filter_bar from '../Components/Product/Filter_bar'
 function Pages() {
   return (
     <Routes>
@@ -11,6 +12,7 @@ function Pages() {
         <Route path = "/product" element={<Product/>}/>
         <Route path ='/product/:id' element ={<Detail_product/>}/>
         <Route path = '/cart' element={<Cart/>}/>
+        <Route path = '/ex' element={<Filter_bar/>}/>
     </Routes>
   )
 }

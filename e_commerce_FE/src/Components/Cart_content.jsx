@@ -34,7 +34,7 @@ function Cart_content() {
     let tax = 0
     cart.forEach(item => {
       totalQuantity += item.quantity
-      price += item.prices * item.quantity
+      price += item.price * item.quantity
       tax =  price * 0.08
       totalPrice = price + tax
     })
@@ -51,9 +51,9 @@ function Cart_content() {
           <Cart_content_card 
             key={item.id}
             id={item.id}
-            image={item.image}
-            name={item.name}
-            prices={item.prices} 
+            img={item.img}
+            title={item.title}
+            price={item.price} 
             quantity={item.quantity}
           />
           ))}

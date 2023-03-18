@@ -21,7 +21,6 @@ function Product_Contain() {
                  console.error(error);
                }
           }
-      
           if (selectedCategory === 'All Categories') {
            
             fetchAllProducts();
@@ -44,17 +43,16 @@ function Product_Contain() {
     
   return (
     <div className="mt-4">
-    {/* {filterContent.length === 0  ?  */}
-    <div className="mt-4 grid grid-cols-1 md:p-10 p-6 md:grid-cols-3  md:gap-10 mx-auto">
+    <div className="mt-4 grid grid-cols-1 md:p-10 p-6 md:grid-cols-3  md:gap-6 mx-auto">
     {subContent.map((items) => ( 
-     <div> 
+     <div > 
          
             <ProductCard
                 id = {items.id}
-                image = {items.images[0]}
-                name = {items.title}
+                img = {items.images[0]}
+                title = {items.title}
                 description = {items.description}
-                prices= {items.price}
+                price= {items.price}
            />
      
      </div>

@@ -6,7 +6,7 @@ import { AiOutlineDown } from 'react-icons/ai'
 import CategoryContext from "../Components/Product/CategoryContext";
 function Product() {
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
-  const [content, setContent] = useState([]); 
+  const [content, setContent] = useState([]);
   const [subContent, setsubContent] = useState([])
   const [filterMobile, setFilterMobile] = useState(false)
   const [windowSize, setWindowSize] = useState({
@@ -37,6 +37,14 @@ function Product() {
   function handleFilterDropDown() {
     setFilterMobile(!filterMobile)
   }
+
+  useEffect(() => {
+    if (filterMobile) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [filterMobile]);
   return (
     <div className="md:px-[6em]">
       <CategoryContext.Provider value={{ selectedCategory, setSelectedCategory, content, setContent, subContent, setsubContent }}>
@@ -61,28 +69,33 @@ function Product() {
               </div>
             </div>
           ) : (
-            <div >
-              {filterMobile ?
-                <div class="relative">
-
-                  <Product_Contain />
-
-                  <div class="absolute inset-0 bg-black opacity-20"></div>
-                </div>
-
-                : <div>
-                  <Product_Contain />
-                </div>}
-              {filterMobile &&
-                <div className="fixed bottom-0 left-0 w-full z-10 bg-white">
+            <div className="relative">
+              <div className="overflow-y-scroll">
+                <Product_Contain />
+              </div>
+              {filterMobile && (
+                <div className="absolute top-0 left-0 h-full w-full z-10 bg-white overflow-y-scroll"
+                // style={{ maxHeight: 'calc(100vh - 4rem)' }}
+                onTouchStart={e => e.stopPropagation()}
+                onTouchMove={e => e.stopPropagation()}>
                   <Filter_bar />
                 </div>
-              }
+              )}
+              <button
+                className="fixed bottom-0 right-0 m-4 p-2 rounded-full bg-gray-700 text-white"
+                onClick={handleFilterDropDown}
+              >
+                
+              </button>
+              {filterMobile && (
+                <div className="fixed inset-0 bg-black opacity-20 z-5" onClick={handleFilterDropDown}></div>
+              )}
             </div>
           )}
         </div>
       </CategoryContext.Provider>
     </div>
+
   );
 }
 

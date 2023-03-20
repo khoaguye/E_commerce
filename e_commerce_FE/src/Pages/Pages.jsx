@@ -5,6 +5,8 @@ import Product from './Product'
 import Detail_product from './Detail_product'
 import Cart from './Cart'
 import Filter_bar from '../Components/Product/Filter_bar'
+import Product_manage from '../Components/Admin/Product_manage';
+import Admin from './Admin'
 function Pages() {
   return (
     <Routes>
@@ -12,7 +14,7 @@ function Pages() {
         <Route path = "/product" element={<Product/>}/>
         <Route path ='/product/:id' element ={<Detail_product/>}/>
         <Route path = '/cart' element={<Cart/>}/>
-        <Route path = '/ex' element={<Filter_bar/>}/>
+        <Route path = '/admin' element={<Admin/>}/> 
     </Routes>
   )
 }

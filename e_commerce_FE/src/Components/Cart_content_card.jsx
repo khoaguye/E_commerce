@@ -1,5 +1,4 @@
 import React from "react";
-import head from "./headphone.png";
 import {
   AiFillStar,
   AiOutlineHeart,

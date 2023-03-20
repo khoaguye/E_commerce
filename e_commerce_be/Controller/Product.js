@@ -2,7 +2,7 @@ import axios from "axios";
 
 //Fetch 20 product for Product page
 export const allProduct = (req, res) => {
-    axios.get('https://dummyjson.com/products')
+    axios.get('https://dummyjson.com/products?limit=100&skip=0')
       .then(response => {
         const products = response.data;
         res.json(products);
@@ -82,3 +82,13 @@ export const productDetail = (req, res) => {
       });
   }
 
+export const addProduct = (req,res) => {
+  const userInput = req.body
+  axios.post('https://dummyjson.com/products/add', userInput)
+  .then(response => {
+    console.log('Product created:', response.data);
+  })
+  .catch(error => {
+    console.error('Error creating product:', error.response.data);
+  });
+}

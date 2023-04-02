@@ -8,8 +8,8 @@ const [content, setContent] = useState([]);
      async function fetchProductContent() {
        try {
          const response = await axios.get('/product/productContent');
-          console.log(response.data.products)
-         setContent(response.data.products);
+          console.log(response.data)
+         setContent(response.data);
         
        } catch (error) {
          console.error(error);
@@ -29,10 +29,10 @@ const [content, setContent] = useState([]);
         {content.map((items) => ( 
             <ProductCard
                 id = {items.id}
-                img = {items.images[0]}
+                img = {items.images}
                 title = {items.title}
                 description = {items.description}
-                prices= {items.price}
+                price= {items.price}
            />
            ))} 
         </div>

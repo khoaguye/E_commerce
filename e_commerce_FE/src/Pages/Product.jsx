@@ -3,11 +3,11 @@ import Header from "../Components/Header";
 import Filter_bar from "../Components/Product/Filter_bar";
 import Product_Contain from "../Components/Product/Product_Contain";
 import { AiOutlineDown } from 'react-icons/ai'
-import CategoryContext from "../Components/Product/CategoryContext";
+import ProductContext from "../Components/Product/ProductContext";
 function Product() {
-  const [selectedCategory, setSelectedCategory] = useState('All Categories');
-  const [content, setContent] = useState([]);
-  const [subContent, setsubContent] = useState([])
+  // const [selectedCategory, setSelectedCategory] = useState('All Categories');
+  // const [content, setContent] = useState([]);
+  // const [subContent, setsubContent] = useState([])
   const [filterMobile, setFilterMobile] = useState(false)
   const [windowSize, setWindowSize] = useState({
     width: undefined,
@@ -47,7 +47,7 @@ function Product() {
   }, [filterMobile]);
   return (
     <div className="md:px-[6em]">
-      <CategoryContext.Provider value={{ selectedCategory, setSelectedCategory, content, setContent, subContent, setsubContent }}>
+      {/* <ProductContext.Provider value={{ selectedCategory, setSelectedCategory, content, setContent, subContent, setsubContent }}> */}
         <div className="px-[2em]">
           <Header />
         </div>
@@ -93,7 +93,7 @@ function Product() {
             </div>
           )}
         </div>
-      </CategoryContext.Provider>
+      {/* </ProductContext.Provider> */}
     </div>
 
   );

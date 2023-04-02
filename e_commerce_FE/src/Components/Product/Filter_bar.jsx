@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import CategoryDropdown from "./CategoryDropdown"
-import CategoryContext from './CategoryContext'
+import {ProductContext} from './ProductContext'
 function Filter_bar() {
   const [price, setPrice] = useState(500);
   const [checkboxes, setCheckboxes] = useState([
@@ -8,8 +8,8 @@ function Filter_bar() {
     { id: "checkbox4", label: "Price High - Low", isChecked: false },
   ]);
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
-  const {content, setContent} = useContext(CategoryContext); 
-  const {subContent, setsubContent} = useContext(CategoryContext)
+  const {content, setContent} = useContext(ProductContext); 
+  const {subContent, setsubContent} = useContext(ProductContext)
   const [brand, setBrand] = useState("");
   function handlePriceChange(event) {
     setPrice(event.target.value);

@@ -1,14 +1,17 @@
 import express from "express"
-import {productContent, allProduct, category, productCategory,searchProduct, productDetail, addProduct} from "../Controller/Product.js"
+import { allProduct,productContent, productDetail,category, productCategory,searchProduct, addProduct,updateProduct,deleteProduct} from "../Controller/Product.js"
 const router = express.Router();
 
-router.get("/productContent", productContent)
+//router.get("/productContent", productContent)
 router.get("/allProduct", allProduct)
+router.get("/productContent", productContent)
 router.get("/productDetail/:id", productDetail)
 router.get("/category", category)
 router.get("/productCategory/:category", productCategory)
 router.get("/searchProduct/:product", searchProduct)
-router.get("/addProduct", addProduct)
+router.post("/addProduct", addProduct)
+router.put("/updateProduct", updateProduct)
+router.delete("/deleteProduct", deleteProduct)
 
 
 

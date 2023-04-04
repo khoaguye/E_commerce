@@ -1,7 +1,9 @@
 import { db } from "../db.js";
 
 export const allOrder = (req, res) => {
-    const q = `SELECT e_commere.user.username, e_commere.order_management.date, 
+    const q = `SELECT
+  MAX(e_commere.order_management.id) as orderId,
+   e_commere.user.username, e_commere.order_management.date, 
    SUM(e_commere.orderdetail.quantity) as total_quantity, 
    MAX(e_commere.order_management.orderStatus) as order_status, 
    SUM(e_commere.products.price) as product_price
@@ -36,5 +38,60 @@ export const historyOrder = (req, res) => {
      })
 }
 
-export const updateOrder = (req, res) =>{
+
+
+export const createOrder =(req, res) =>{
+    let orderId;
+    const order_management_value = [
+        req.body.uid,
+        req.body.date,
+        req.body.orderStatus
+    ]
+    
+    const q = "INSERT INTO order_management (`uid`, `date`, `orderStatus`) VALUES (?)"
+    db.query(q,[order_management_value], (error, results) =>{
+        if(error){
+            throw error;
+        } else{
+           orderId = results.insertId;
+           const orderDetail_values = req.body.cart.map(item => [
+            orderId,
+            item.productId,
+            item.quantity
+          ]);
+            const orderDetail_querry = 
+            "INSERT INTO orderdetail (`orderId`, `productId`, `quantity`) VALUES ?"
+            db.query(orderDetail_querry, [orderDetail_values], (error, results) =>{
+                if(error){
+                    throw error;
+                }
+                else{
+                    res.status(201).json({orderId})
+                }
+            })
+        }
+    
+    })
 }
+
+export const updateOrder = (req, res) =>{
+    const orderStatus = req.body.orderStatus
+    const orderId = req.body.id
+
+    const q = `UPDATE order_management SET orderStatus = "${orderStatus}" WHERE id = ${orderId}`
+    db.query(q,(error, results)=>{
+        if(error) throw error;
+        res.json({message: " Order successfull updated"})
+    })
+}
+export const deleteOrder =(req,res) =>{
+    const orderId = req.body.id
+   
+    const q = `DELETE FROM order_management WHERE id = ${orderId}`
+  
+    db.query(q, (error, results)=>{
+      if(error) throw error;
+      res.json({message: " Order successfull deleted"})
+    })        
+  
+  }

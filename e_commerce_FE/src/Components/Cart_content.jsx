@@ -3,6 +3,7 @@ import Cart_content_card from "./Cart_content_card";
 import DeliveryMethod from "./DeliverryMethod";
 import { useSelector } from 'react-redux';
 import {Link} from 'react-router-dom';
+import axios from "axios";
 function Cart_content() {
   const [selectedOption, setSelectedOption] = useState("credit-card");
   // const [totalSubPrice, setSubTotalPrice] = useState(0)
@@ -14,10 +15,11 @@ function Cart_content() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // perform payment method submission logic
+   
   };
 
   const cart = useSelector((state) => state.cart)
-
+   console.log(cart)
   function getSubTotalPrice(){
     let total = 0
   cart.forEach(item => {
@@ -25,7 +27,7 @@ function Cart_content() {
   })
   return total
   }
-
+  
 
   const getTotal = () => {
     let totalQuantity = 0
@@ -40,6 +42,28 @@ function Cart_content() {
     })
     return {price, totalPrice, totalQuantity, tax}
   }
+  const orderContain = {
+    uid : "8",
+    date: "04/04/2023",
+    orderStatus: "Shiped",
+    cart: cart.map( item => ({productId: item.id, quantity: item.quantity}))
+  }
+  const handlePlaceOrder = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("/order/createOrder", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderContain),
+      });
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 mt-[2em] gap-4">
       <div className=" md:col-span-3 ">
@@ -216,7 +240,8 @@ function Cart_content() {
               <button
                 type="submit"
                 className="bg-green-600 w-[100%] hover:bg-green-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              >
+                onClick={handlePlaceOrder}
+             >
                 Pay Now
               </button>
               

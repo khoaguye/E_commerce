@@ -4,7 +4,7 @@ import {ProductContext} from '../Product/ProductContext';
 function SearchResult({ searchValue }) {
   const { content, setContent } = useContext(ProductContext);
   const [searchContent, setSearchContent] = useState([]);
-  console.log('new: ' + searchValue);
+  //console.log('new: ' + searchValue);
 
   useEffect(() => {
     const newSearchContent = content.filter((item) =>
@@ -17,7 +17,7 @@ function SearchResult({ searchValue }) {
     }
   }, [searchValue]);
 
-  console.log(searchContent);
+  //console.log(searchContent);
 
   return (
     <div className="bg-light-grey max-h-48 overflow-y-scroll mt-2 mr-10 px-4 overflow-y-auto">

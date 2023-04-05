@@ -42,9 +42,19 @@ function Cart_content() {
     })
     return {price, totalPrice, totalQuantity, tax}
   }
+  // get the date time:
+  const now = new Date();
+const year = now.getFullYear();
+const month = (now.getMonth() + 1).toString().padStart(2, '0');
+const day = now.getDate().toString().padStart(2, '0');
+const hours = now.getHours().toString().padStart(2, '0');
+const minutes = now.getMinutes().toString().padStart(2, '0');
+const seconds = now.getSeconds().toString().padStart(2, '0');
+const datetime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+console.log(datetime);
   const orderContain = {
     uid : "8",
-    date: "04/04/2023",
+    date: datetime,
     orderStatus: "Shiped",
     cart: cart.map( item => ({productId: item.id, quantity: item.quantity}))
   }

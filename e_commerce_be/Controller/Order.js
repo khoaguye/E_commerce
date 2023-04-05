@@ -16,6 +16,11 @@ export const allOrder = (req, res) => {
 `
     db.query(q, [req.query], (error, results) => {
         if (error) return res.send(err)
+        // convert the date string to a Date object
+        results.forEach(result => {
+            result.date = new Date(result.date)
+        })
+
         return res.status(200).json(results)
     })
 }

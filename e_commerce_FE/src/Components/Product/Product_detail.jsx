@@ -13,16 +13,16 @@ import { addToCart } from "../../Redux/cartSlice";
 
 function Product_detail() {
   const [count, setCount] = useState(1);
-  const [content, setContent]= useState({})
-  const [image, setImage] = useState([]);
+  const [detailcontent, setDetailContent]= useState([])
+  //const [image, setImage] = useState([]);
   const params = useParams();
   useEffect(() => {
     async function fetchProductContent() {
       try {
         const response = await axios.get(`/product/productDetail/${params.id}`);
          console.log(response.data)
-        setContent(response.data);
-        setImage(response.data.images)
+        setDetailContent(response.data);
+        //setImage(response.data.images)
       } catch (error) {
         console.error(error);
       }
@@ -35,25 +35,27 @@ function Product_detail() {
 
 const dispatch = useDispatch() 
 const handleAddToCart = (event) => {
-  const { id, title, price, images } = content;
-  const img = images[0];
- dispatch(addToCart({ id, title, img, price, quantity: count}));
- console.log(content)
- console.log(id, title, img)
+  //const { id, title, price, images } = content;
+  //const img = images[0];
+ dispatch(addToCart({ detailcontent, quantity: count}));
+ console.log(detailcontent)
+ //console.log(id, title, images)
 }
   return (
     <div className="mt-4">
-  
+      {detailcontent.map((item) =>(
+    
+      <>
       <div className="flex flex-col md:flex-row gap-4">
      
-      <div className="order-2 md:order-1 md:mt-[2em] ">
-          <img src={image[0]} alt = "product" />
+      <div className="order-2 md:order-1 md:mt-[2em] w-full h-[50%]   text-center">
+          <img src={item.images} alt = "product" className ="w-full h-full md:max-w-[50%] md:max-h-[50%] md:mx-auto md:my-auto"/> 
         </div>
 
         <div className="order-1 md:order-2 md:hidden mt-4 md:mt-0">
-          <h1 className="text-[1.5em]  font-bold">{content.title}</h1>
+          <h1 className="text-[1.5em]  font-bold">{item.title}</h1>
           <p className="font-light mt-2">
-            {content.description}
+            {item.description}
           </p>
           <div className="flex mt-2 ">
             <AiFillStar className="text-green-700" />
@@ -65,9 +67,9 @@ const handleAddToCart = (event) => {
         
         <div className="order-3 mt-6 md:ml-[4em]">
         <div className="hidden md:block">
-          <h1 className="text-[2.5em] font-bold">{content.title}</h1>
+          <h1 className="text-[2.5em] font-bold">{item.title}</h1>
           <p className="font-light mt-2">
-            {content.description}
+            {item.description}
           </p>
           <div className="flex mt-2 md:mt-6 ">
             <AiFillStar className="text-green-700" />
@@ -77,7 +79,7 @@ const handleAddToCart = (event) => {
           </div>
         </div>
 
-          <h2 className="text-[1.45rem] font-semibold md:mt-6 ">${content.price}</h2>
+          <h2 className="text-[1.45rem] font-semibold md:mt-6 ">${item.price}</h2>
           <div className="flex gap-4 mt-3 md:mt-5">
             <AiFillPlusCircle
               size={"25px"}
@@ -126,6 +128,8 @@ const handleAddToCart = (event) => {
           </div>
         </div>
       </div>
+      </>
+       ))}
     </div>
     
   );

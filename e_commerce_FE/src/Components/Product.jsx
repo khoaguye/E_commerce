@@ -8,8 +8,8 @@ const [content, setContent] = useState([]);
      async function fetchProductContent() {
        try {
          const response = await axios.get('/product/productContent');
-          console.log(response.data.products)
-         setContent(response.data.products);
+          console.log(response.data)
+         setContent(response.data);
         
        } catch (error) {
          console.error(error);
@@ -22,17 +22,17 @@ const [content, setContent] = useState([]);
 
    console.log(content)
   return (
-    <div className="mt-4">
+    <div className="mt-6">
         <h1 className='text-green-900 text-[1.5rem] font-bold'>Happy Shopping!!</h1>
            
         <div className="mt-4 grid grid-cols-1 md:p-10 p-6 md:grid-cols-3 xl:grid-cols-4 gap-4 mx-auto ">
         {content.map((items) => ( 
             <ProductCard
                 id = {items.id}
-                img = {items.images[0]}
+                img = {items.images}
                 title = {items.title}
                 description = {items.description}
-                prices= {items.price}
+                price= {items.price}
            />
            ))} 
         </div>

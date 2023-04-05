@@ -42,7 +42,6 @@ function Home() {
           <Menu />
         </div>
       </div>
-      <Categories_bar isMobile ={false} />
       <Product/>
     </div> 
     <Footer/>

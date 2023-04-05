@@ -2,20 +2,20 @@ import React, {useState, useEffect, useContext} from 'react'
 import ProductCard from '../ProductCard'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import CategoryContext from './CategoryContext'
+import {ProductContext} from './ProductContext'
 
 function Product_Contain() {
-     const {content, setContent} = useContext(CategoryContext);  
-     const {subContent, setsubContent} = useContext(CategoryContext)
-     const { selectedCategory, setSelectedCategory } = useContext(CategoryContext);  
+     const {content, setContent} = useContext(ProductContext);  
+     const {subContent, setsubContent} = useContext(ProductContext)
+     const { selectedCategory, setSelectedCategory } = useContext(ProductContext);  
      
      console.log(selectedCategory)
      useEffect(() => {
           async function fetchAllProducts() {
                try {
                  const response = await axios.get('/product/allProduct');
-                 setContent(response.data.products);
-                 setsubContent(response.data.products);
+                 setContent(response.data);
+                 setsubContent(response.data);
                
                } catch (error) {
                  console.error(error);
@@ -29,8 +29,8 @@ function Product_Contain() {
                try {
                 
                  const response = await axios.get(`/product/productcategory/${selectedCategory}`);
-                 setContent(response.data.products);
-                 setsubContent(response.data.products);
+                 setContent(response.data);
+                 setsubContent(response.data);
                } catch (error) {
                  console.error(error);
                }
@@ -49,7 +49,7 @@ function Product_Contain() {
          
             <ProductCard
                 id = {items.id}
-                img = {items.images[0]}
+                img = {items.images}
                 title = {items.title}
                 description = {items.description}
                 price= {items.price}

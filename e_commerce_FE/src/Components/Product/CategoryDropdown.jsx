@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import axios from 'axios'
 import {IoIosArrowDropdownCircle} from "react-icons/io"
 import Product_Contain from './Product_Contain'
-import CategoryContext from './CategoryContext';
+import {ProductContext} from './ProductContext';
 const categories = [
   "All Categories",
   "smartphones",
@@ -30,9 +30,9 @@ const categories = [
 function CategoryDropdown() {
   //const [selectedCategory, setSelectedCategory] = useState('All categories');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
- // const {filterContent, setFilterContent} = useContext(CategoryContext)
+ // const {filterContent, setFilterContent} = useContext(ProductContext)
   const [selectedCategoryProducts, setSelectedCategoryProducts] = useState([]);
-  const { selectedCategory, setSelectedCategory } = useContext(CategoryContext);
+  const { selectedCategory, setSelectedCategory } = useContext(ProductContext);
 
   function handleCategoryClick(category) {
    

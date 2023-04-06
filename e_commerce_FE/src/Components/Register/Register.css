@@ -1,4 +1,4 @@
-.register-form{
+/* .register-form{
     text-align: center;
     display: flex;
     min-height: 100vh;
@@ -11,7 +11,30 @@
 .authf-form-container{
     display: flex;
     flex-direction: column;
-} 
+}  */
+
+.login-form {
+    background-image: url("registerdesert.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative; 
+  }
+  
+  .login-form::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+   
+  }
+  
+.login-form .formm {
+    position: relative;
+    z-index: 1;
+  }
 label{
     text-align: left;
     padding: 0.25rem 0;

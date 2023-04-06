@@ -1,107 +1,152 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Register.css";
 
 export const Register = () => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
-    const[fname, setfName] = useState('');
-    const[lname, setlName] = useState('');
-    const[phonenum, setNum] = useState('');
-    const[adress, setAd] = useState('');
-    const[city, setCity] = useState('');
-    const[zip, setZip] = useState('');
-    const[bday, setBday] = useState('');
+    const [fname, setFName] = useState('');
+    const [lname, setlName] = useState('');
+    const [phonenum, setPhoneNum] = useState('');
+    const [address, setAd] = useState('');
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(email);
     }
-    return(
-        <div className="auth-form-container">
-        
-        <form className = "register-form" onSubmit={handleSubmit}>
-        <label htmlfor="email">Email:</label>
-        <input
-            className="h-5 w-40"
-            placeholder = "youremail@gmail.com"
-            size={35}
-            type="email"
-    />
-        {/* <input value={email} on change={(e) => setEmail(e.target.value)}type = "email" placeholder="YourEmail@email.com" id="email" name ="email"></input> */}
-        <label htmlfor="password">Password:</label>
-        <input
-            className="h-5 w-40"
-            placeholder = "*********"
-            size={35}
-            type="password"
-    />
-        {/* <input value={pass}  on change={(e) => setPass(e.target.value)}type = "password" placeholder="********" id="password" name ="password"></input> */}
-        <label htmlfor="fname">FirstName:</label>
-        <input
-            className="h-5 w-40"
-            placeholder = "firstname"
-            size={35}
-            type="text"
-    />
-        {/* <input value={fname} on change={(e) => setfName(e.target.value)}type = "fname" placeholder="firstname" id="fname" name ="fname"></input> */}
-        <label htmlfor="lname">LastName:</label>
-        <input
-            className="h-5 w-40"
-            placeholder = "lastname"
-            size={35}
-            type="text"
-    />
-        {/* <input value={lname} on change={(e) => setlName(e.target.value)}type = "lname" placeholder="lastname" id="lname" name ="lname"></input> */}
-        <label htmlfor="phonenum">PhoneNumber:</label>
-        <input
-            className="h-5 w-40"
-            placeholder = "(xxx)xxx-xxxx"
-            size={35}
-            type="text"
-    />
-        {/* <input value={phonenum} on change={(e) => setNum(e.target.value)}type = "phonenum" placeholder="(xxx)xxx-xxxx" id="phonenum" name ="phonenum"></input> */}
-        <label htmlfor="adress">Adress:</label>
-        <input
-            className="h-5 w-40"
-            placeholder = "123 yourstreet"
-            size={35}
-            type="text"
-    />
-        {/* <input value={adress} on change={(e) => setAd(e.target.value)}type = "adress" placeholder="123 st." id="adress" name ="adress"></input> */}
-        <label htmlfor="city">City:</label>
-        <input
-            className="h-5 w-40"
-            placeholder = "City"
-            size={35}
-            type="text"
-    />
-        {/* <input value={city} on change={(e) => setCity(e.target.value)}type = "city" placeholder="City initials here" id="city" name ="city"></input> */}
-        <label htmlfor="zip">Zipcode:</label>
-        <input
-            className="h-5 w-40"
-            placeholder = "zipcode"
-            size={35}
-            type="text"
-    />
-        {/* <input value={zip} on change={(e) => setZip(e.target.value)}type = "zip" placeholder="xxxxx" id="zip" name ="zip"></input> */}
-        <label htmlfor="bday">BirthDay:</label>
-        <input
-            className="h-5 w-40"
-            placeholder = "monthdayyear"
-            size={35}
-            type="date"
-    />
-        {/* <input value={bday} on change={(e) => setBday(e.target.value)}type = "bday" placeholder="MonthDayYear" id="bday" name ="bday"></input> */}
-        
-        <button type="submit">Create Account</button>
-        </form>
-        <Link to = "/user/Login">
-        <button>Already have an account? Login here.</button>
 
-        </Link>
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value)
+        console.log(email)
+    }
+    const handlePasswordChange = (e) => {
+        setPass(e.target.value)
+        console.log(pass)
+    }
+    const handleFnameChange = (e) => {
+        setFName(e.target.value)
+        console.log(fname)
+    }
+    const handleLnameChange = (e) => {
+        setlName(e.target.value)
+        console.log(lname)
+    }
+    const handleAddressChange = (e) => {
+        setAd(e.target.value)
+        console.log(address)
+    }
+    const handlePhoneChange = (e) => {
+        setPhoneNum(e.target.value)
+        console.log(phonenum)
+    }
+    return (
+        <div className="login-form flex items-center justify-center h-screen  ">
+           
+            <div className="formm bg-light-grey flex flex-col gap-4 items-center justify-center w-[80%] md:w-[55%]  overflow-auto border border-black  py-2 rounded-md ">
+            <h2 className="text-3xl font-bold mb-8 text-green-900 ">Register</h2>
+            <div className = "flex flex-col md:flex-row w-[70%] justify-around items-center gap-4">
+                <div>                
+                    <form className="w-[100%] ">
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="password">
+                            First Name:
+                        </label>
+                        <input
+                            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            id="fname"
+                            type="text"
+                            placeholder="First name"
+                            onChange={handleFnameChange}
+                        />
+                    </div>
+                    <div className="mb-4 ">
+                        <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="password">
+                            Last Name:
+                        </label>
+                        <input
+                            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            id="fname"
+                            type="text"
+                            placeholder="Last name"
+                            onChange={handleLnameChange}
+                        />
+                    </div>
 
-        
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="email">
+                            Email
+                        </label>
+                        <input
+                            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            id="email"
+                            type="email"
+                            placeholder="Email"
+                            onChange={handleEmailChange}
+                        />
+                    </div>
+                    </form>
+                    </div>
+                    <div>
+                    <form className="w-[100%]">
+                
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="password">
+                            Password
+                        </label>
+                        <input
+                            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            id="password"
+                            type="password"
+                            placeholder="Password"
+                            onChange={handleAddressChange}
+                        />
+                    </div>
+
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="password">
+                            Address
+                        </label>
+                        <input
+                            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            id="text"
+                            type=""
+                            placeholder="Address"
+                            onChange={handlePhoneChange}
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="password">
+                            Phone
+                        </label>
+                        <input
+                            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            id="password"
+                            type="text"
+                            placeholder="Phone Number"
+                            onChange={handlePasswordChange}
+                        />
+                    </div>
+
+                    
+                     
+                    
+                </form>
+                </div>
+                </div>
+                <button
+                            className="w-[70%] bg-green-500 hover:bg-green-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            type="button"
+                        >
+                            Register
+                        </button>
+                <Link to="/user/login">
+                    <div className="mt-5">
+                        <p class="pb-2 border-b-2">Already have account? Login Here!!!</p>
+
+                    </div>
+                </Link>
+            </div>
         </div>
     )
 }

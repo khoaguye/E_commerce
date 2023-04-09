@@ -50,28 +50,16 @@ import { db } from "../db.js";
 export const allProduct= (req, res) =>{
   const q = "SELECT * FROM products"
   db.query(q, [req.query], (error, results) =>{
-     if (error) return res.send(err)
+     if (error) return res.send(error)
     return res.status(200).json(results)
   });
 }    
 
-//Fetch six product for landing page 
-// export const productContent = (req, res) => {
-//     axios.get('https://dummyjson.com/products?limit=8&skip=10&select=title,price,description,rating,images')
-//       .then(response => {
-//         const products = response.data;
-//         res.json(products);
-//       })
-//       .catch(error => {
-//         console.log(error);
-//         res.status(500).json({ error: 'Internal Server Error' });
-//       });
-//   }
 
 export const productContent = (req, res) =>{
   const q = 'SELECT * FROM products ORDER BY RAND() LIMIT 8'
   db.query(q, [req.query], (error, results) =>{
-    if(error) return res.send(err)
+    if(error) return res.send(error)
     return res.status(200).json(results)
   })
 }
@@ -170,42 +158,4 @@ export const searchProduct = (req, res) =>{
 
 }
 
-// export const searchProduct = (req, res) => {
-//   const product = req.params.product;
-//   axios.get(`https://dummyjson.com/products/search?q=${product}`)
-//     .then(response => {
-//       const product = response.data;
-//       res.json(product);
-//     })
-//     .catch(error => {
-//       console.log(error);
-//       res.status(500).json({ error: 'Internal Server Error' });
-//     });
-// }
 
-// export const productDetail = (req, res) => {
-//   const { id } = req.params;
-//   axios.get(`https://dummyjson.com/products/${id}`)
-//     .then(response => {
-//       const products = response.data;
-//       res.json(products);
-//     })
-//     .catch(error => {
-//       console.log(error);
-//       res.status(500).json({ error: 'Internal Server Error' });
-//     });
-// }
-
- //Fetch the product by category
-  // export const productCategory = (req, res) => {
-  //   const category = req.params.category;
-  //   axios.get(`https://dummyjson.com/products/category/${category}`)
-  //     .then(response => {
-  //       const cat = response.data;
-  //       res.json(cat);
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //       res.status(500).json({ error: 'Internal Server Error' });
-  //     });
-  // }

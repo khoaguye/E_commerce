@@ -5,6 +5,7 @@ import Admin_manage from "./Admin_manage";
 import {BsFillPersonFill, BsFillBagCheckFill} from "react-icons/bs"
 import {HiShoppingCart} from "react-icons/hi"
 import {RiMoneyDollarCircleFill} from "react-icons/ri"
+import PromoteManage from "./PromoteManage";
 
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
         return <Product_manage />;
       case "sale_manage":
         return <Sale_manage />;
+      case "promote_manage":
+        return <PromoteManage/>
     }
   };    
 
@@ -58,8 +61,8 @@ function App() {
           </li>
          
           <li
-            className={selectedMenuItem === "sale_manage" ? "active" : ""}
-            onClick={() => handleMenuItemClick("sale_manage")}
+            className={selectedMenuItem === "promote_manage" ? "active" : ""}
+            onClick={() => handleMenuItemClick("promote_manage")}
           >
              <div className="flex gap-2 bg-white text-green-900 hover:bg-green-900 hover:text-white md:px-10 md:py-1 rounded ">
             <RiMoneyDollarCircleFill size ="20px" className="mt-0.5"/>

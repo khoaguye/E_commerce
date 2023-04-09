@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import CategoryDropdown from "./CategoryDropdown"
 import {ProductContext} from './ProductContext'
 function Filter_bar() {
-  const [price, setPrice] = useState(500);
+  const [price, setPrice] = useState(2000);
   const [checkboxes, setCheckboxes] = useState([
     { id: "checkbox3", label: "Price Low - High", isChecked: false },
     { id: "checkbox4", label: "Price High - Low", isChecked: false },
@@ -45,11 +45,15 @@ function Filter_bar() {
   function handlePriceRange() {  
     // Apply the filter to 'content'
     const filteredProduct = content.filter((obj) => {
-      return obj.price < price;
+      console.log(obj.price)
+      return Number(obj.price) <= price;
     });
-  
+    console.log(price)
+    console.log(filteredProduct)
     // Set the filtered value back to 'content'
     setsubContent(filteredProduct);
+    console.log( content)
+    console.log( subContent)
    
   }
 

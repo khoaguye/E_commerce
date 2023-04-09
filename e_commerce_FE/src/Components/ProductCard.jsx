@@ -30,7 +30,7 @@ function ProductCard({id, title, img, description, price}) {
       <AiFillStar className='text-green-700' />
       <AiFillStar className='text-green-700' />
     </div>
-    <button className="rounded-full font-bold px-4 py-2 border-2 border-black bg-white hover:bg-green-900 hover:transition-duration-1000 hover:text-white"
+    <button className="rounded-full font-bold px-4 py-2 border-2 border-black bg-green-600 hover:bg-green-900 hover:transition-duration-1000 hover:text-white"
      onClick={handleAddToCart}
     > Add to Cart</button>
   </div>

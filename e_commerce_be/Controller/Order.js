@@ -2,8 +2,8 @@ import { db } from "../db.js";
 
 export const allOrder = (req, res) => {
     const q = `SELECT
-  MAX(e_commere.order_management.id) as orderId,
-   e_commere.user.username, e_commere.order_management.date, 
+   MAX(e_commere.order_management.id) as orderId,
+   e_commere.user.username, DATE_FORMAT(e_commere.order_management.date, '%Y-%m-%d %H:%i:%s') as order_date,
    SUM(e_commere.orderdetail.quantity) as total_quantity, 
    MAX(e_commere.order_management.orderStatus) as order_status, 
    SUM(e_commere.products.price) as product_price
@@ -12,10 +12,10 @@ export const allOrder = (req, res) => {
    JOIN e_commere.orderdetail ON e_commere.order_management.id = e_commere.orderdetail.orderId
    JOIN e_commere.products ON e_commere.orderdetail.productId = e_commere.products.id
    
-   GROUP BY e_commere.user.username, e_commere.order_management.date;
+   GROUP BY e_commere.user.username, order_date;
 `
     db.query(q, [req.query], (error, results) => {
-        if (error) return res.send(err)
+        if (error) return res.send(error)
         // convert the date string to a Date object
         results.forEach(result => {
             result.date = new Date(result.date)

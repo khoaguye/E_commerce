@@ -78,9 +78,14 @@ console.log(datetime);
     <div className="grid grid-cols-1 md:grid-cols-4 mt-[2em] gap-4">
       <div className=" md:col-span-3 ">
         <div className="border p-3 md:p-5 ">
+          <div className = "flex justify-between">
           <h1 className="text-[1rem] md:text-[2rem] font-bold text-yellow-600">
             YOUR CARTS
           </h1>
+          <h2 className="mt-2">
+            Apply Coupon
+          </h2>
+          </div>
           {cart?.map((item) => (
           <Cart_content_card 
             key={item.id}

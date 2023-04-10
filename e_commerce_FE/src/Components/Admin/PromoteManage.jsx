@@ -139,7 +139,7 @@ return (
         </label>
   }
 <label className="block mb-2">
-          code:
+          Code:
           <input
             className="block w-full border border-gray-400 rounded py-2 px-3"
             type="text"

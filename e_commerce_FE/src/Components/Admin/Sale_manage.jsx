@@ -15,7 +15,7 @@ function Sale_manage() {
   return (
     <div className='px-2 flex flex-col justify-center items-center  '>
       <div className=' flex gap-2  '>
-        <button className='bg-green-600 hover:bg-green-900 px-4 py-2 text-white font-bold rounded' onClick = {handelButtonCurrent}> Current Orders Management </button>
+        <button className='bg-green-600 hover:bg-green-900 px-4 py-2 text-white font-bold rounded' onClick = {handelButtonCurrent}> All Orders Management </button>
         <button className='bg-green-600 hover:bg-green-900 px-4 py-2 text-white font-bold rounded' onClick = {handelButtonHistory}>History Orders Management </button>
       </div>
       <div>

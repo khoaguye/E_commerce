@@ -34,13 +34,15 @@ function Cart_content() {
     let totalPrice = 0
     let price = 0
     let tax = 0
+    let taxRound =0
     cart.forEach(item => {
       totalQuantity += item.quantity
       price += item.price * item.quantity
       tax =  price * 0.08
+      taxRound = tax.toFixed(2)
       totalPrice = price + tax
     })
-    return {price, totalPrice, totalQuantity, tax}
+    return {price, totalPrice, totalQuantity, taxRound}
   }
   // get the date time:
   const now = new Date();
@@ -237,7 +239,7 @@ console.log(datetime);
              </div>
                 <div className= "flex flex-col flex-end">
                 <p> $ {getTotal().price}.00</p>
-                 <p>+ $ {getTotal().tax} </p>
+                 <p>+ $ {getTotal().taxRound} </p>
                 </div>
 
         </div>
@@ -272,3 +274,17 @@ console.log(datetime);
 }
 
 export default Cart_content;
+
+  // Function handle apply coupon 
+  // const handleApplyCoupon = (() =>{
+  //   console.log(cart)
+  //    const updatedCart= cart.map(item => {
+  //     console.log(item.price)
+  //     if (item.category === "laptops") { // <-- check if this is the item being updated
+  //       const discountPrice = item.price * (1- 10/100);
+  //       return {...item, price: discountPrice}; // <-- update only this item
+  //     }
+  //     return item; // <-- return all other items unchanged
+  //       })
+  //       // dispatch(updateCart(updatedCart));
+  // })

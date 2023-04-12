@@ -3,11 +3,11 @@ import { AiFillStar, AiOutlineHeart } from 'react-icons/ai'
 import { useDispatch } from 'react-redux';
 import {addToCart} from '../Redux/cartSlice';
 import { Link } from 'react-router-dom'
-function ProductCard({id, title, img, description, price}) {
+function ProductCard({id, title, img, category, price}) {
  const dispatch = useDispatch() 
  const handleAddToCart = (event) => {
   event.preventDefault();
-  dispatch(addToCart({id, title, img, price}));
+  dispatch(addToCart({id, title, img, price,category}));
 }
   return (
     <Link to ={"/product/" + id}> 

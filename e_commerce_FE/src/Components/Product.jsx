@@ -31,7 +31,7 @@ const [content, setContent] = useState([]);
                 id = {items.id}
                 img = {items.images}
                 title = {items.title}
-                description = {items.description}
+                category = {items.category}
                 price= {items.price}
            />
            ))} 

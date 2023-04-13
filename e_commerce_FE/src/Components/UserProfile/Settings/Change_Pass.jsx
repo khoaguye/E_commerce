@@ -68,10 +68,10 @@ function PassChange() {
 
                     </ul>
 
-                    <Link to="/user/settings" class="">
-                        <button type="button" class="h-12 w-32 md:translate-y-14 sm:w-32 translate-x-2 rounded-full text-base font-bold bg-gradient-to-r bg-orange-500 hover:from-orange-600 hover:to-rose-500 ">
-                            Back to Settings
-                        </button>
+                    <Link to="/user/settings">
+                    <button type="button" className="mt-4 rounded-full text-base  font-bold bg-gradient-to-r bg-orange-500 hover:from-orange-600 hover:to-rose-500 ">
+                        Back to Settings
+                    </button>
 
 
                     </Link>

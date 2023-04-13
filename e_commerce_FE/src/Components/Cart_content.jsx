@@ -108,7 +108,7 @@ console.log(datetime);
         if (promotion) {
           const discountPrice = item.price * (1 - promotion.price_off / 100);
           const discountPriceRound = discountPrice.toFixed(0);
-          promoteText = "The Product is Reduced by the code: " + promotion.code;
+          promoteText = "The Product is Reduced " + promotion.price_off + "% by the code: " + promotion.code;
           //setPromoteText("The Product is Reduced by the code: " + promotion.code)
           console.log(promoteText)
           return { ...item, price: discountPriceRound, promoteText };

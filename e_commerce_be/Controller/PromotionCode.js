@@ -71,10 +71,9 @@ export const getOneCode = (req, res) => {
 })
 }
 
-export const getOneCodeCategory = (req, res) => {
+export const getCodeByCategory = (req, res) => {
   const category = req.body.category
   const q = `SELECT * FROM promotions WHERE category = "${category}"`
-
   db.query(q, [req.query], (error, results) => {
     if (error) throw error;
     return res.status(200).json(results)

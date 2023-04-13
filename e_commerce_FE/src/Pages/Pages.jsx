@@ -9,6 +9,12 @@ import Filter_bar from '../Components/Product/Filter_bar'
 import Product_manage from '../Components/Admin/Product_manage';
 import { Login } from '../Components/Login/Login'
 import { Register } from '../Components/Register/Register'
+import UserProf from '../Components/UserProfile/UserProf';
+import OrderHist from '../Components/UserProfile/Order_Hist';
+import Warning from '../Components/UserProfile/Settings/Warning';
+import EditProf from '../Components/UserProfile/Settings/Edit_Prof';
+import Settings from   '../Components/UserProfile/Settings'
+import PassChange from '../Components/UserProfile/Settings/Change_Pass';
 import Admin from './Admin'
 function Pages() {
   return (
@@ -21,6 +27,12 @@ function Pages() {
         <Route path = '/admin' element={<Admin/>}/> 
         <Route path = '/user/login' element={<Login/>}/>
         <Route path = '/user/register' element={<Register/>}/>
+        <Route path = '/user/profile' element={<UserProf/>}/>
+        <Route path = '/user/orderhistory' element={<OrderHist/>}/>
+        <Route path = '/user/settings/editprofile' element={<EditProf/>}/> 
+        <Route path = '/user/settings' element={<Settings/>}/>
+        <Route path = '/user/settings/changepassword' element={<PassChange/>}/>
+        <Route path = '/user/settings/deletewarning' element={<Warning/>}/>
     </Routes>
     </ContextProvider>
   )

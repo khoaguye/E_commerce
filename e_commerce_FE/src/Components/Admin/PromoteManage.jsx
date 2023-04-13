@@ -160,7 +160,7 @@ return (
           Priceoff (%):
           <input
             className="block w-full border border-gray-400 rounded py-2 px-3"
-            type="text"
+            type="number"
             value= {price_off} 
             onChange={handlePriceoffChange}
           />

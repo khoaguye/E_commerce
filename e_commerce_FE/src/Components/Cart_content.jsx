@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Cart_content_card from "./Cart_content_card";
 import DeliveryMethod from "./DeliverryMethod";
 import { useSelector } from 'react-redux';
 import {Link} from 'react-router-dom';
 import axios from "axios";
+import {updatePrice} from '../Redux/cartSlice';
+import { useDispatch } from 'react-redux';
 function Cart_content() {
   const [selectedOption, setSelectedOption] = useState("credit-card");
-  // const [totalSubPrice, setSubTotalPrice] = useState(0)
-  // const [totalPrice, setTotalPrice] = useState(0)
+  const [promoteCode, setPromoteCode] = useState([]); 
+ // const [promoteText, setPromoteText] = useState("");
+
+  const dispatch = useDispatch() 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
@@ -76,6 +80,45 @@ console.log(datetime);
       console.error(error);
     }
   };
+
+    
+  useEffect(() => {
+     async function fetchPromoteCode() {
+       try {
+         const response = await axios.get('/promote/allPromotions');
+          console.log(response.data)
+         setPromoteCode(response.data);
+         console.log(promoteCode)
+        
+       } catch (error) {
+         console.error(error);
+       }
+     }
+ 
+     fetchPromoteCode();
+    
+   }, []);
+
+  
+    // Function handle apply coupon 
+    const handleApplyCoupon = (() => {
+      const updatedCart = cart.map(item => {
+        const promotion = promoteCode.find(p => p.category === item.category);
+        let promoteText = "";
+        if (promotion) {
+          const discountPrice = item.price * (1 - promotion.price_off / 100);
+          const discountPriceRound = discountPrice.toFixed(0);
+          promoteText = "The Product is Reduced by the code: " + promotion.code;
+          //setPromoteText("The Product is Reduced by the code: " + promotion.code)
+          console.log(promoteText)
+          return { ...item, price: discountPriceRound, promoteText };
+        } else {
+          return {...item, promoteText};
+        }
+      });
+      dispatch(updatePrice(updatedCart));
+    });
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 mt-[2em] gap-4">
       <div className=" md:col-span-3 ">
@@ -84,7 +127,7 @@ console.log(datetime);
           <h1 className="text-[1rem] md:text-[2rem] font-bold text-yellow-600">
             YOUR CARTS
           </h1>
-          <h2 className="mt-2">
+          <h2 className="mt-2" onClick = {handleApplyCoupon}>
             Apply Coupon
           </h2>
           </div>
@@ -96,6 +139,7 @@ console.log(datetime);
             title={item.title}
             price={item.price} 
             quantity={item.quantity}
+            promoteText={item.promoteText}
           />
           ))}
            
@@ -275,16 +319,4 @@ console.log(datetime);
 
 export default Cart_content;
 
-  // Function handle apply coupon 
-  // const handleApplyCoupon = (() =>{
-  //   console.log(cart)
-  //    const updatedCart= cart.map(item => {
-  //     console.log(item.price)
-  //     if (item.category === "laptops") { // <-- check if this is the item being updated
-  //       const discountPrice = item.price * (1- 10/100);
-  //       return {...item, price: discountPrice}; // <-- update only this item
-  //     }
-  //     return item; // <-- return all other items unchanged
-  //       })
-  //       // dispatch(updateCart(updatedCart));
-  // })
+

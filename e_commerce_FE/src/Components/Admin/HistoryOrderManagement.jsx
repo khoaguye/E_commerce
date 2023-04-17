@@ -42,7 +42,7 @@ console.log(orderStatuses)
       {data.map((order, index) => (
         <tr key={order.id} className="bg-white hover:bg-blue-300"  >
           <td className="border border-green-900 pl-2">{order.username}</td>
-          <td className="border border-green-900 pl-2">{order.date}</td>
+          <td className="border border-green-900 pl-2">{order.order_date}</td>
           <td className="border border-green-900 pl-2">
             <input
              className="bg-white hover:bg-blue-300"

@@ -1,22 +1,49 @@
-import react, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, {useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/authContext";
 import "./Login.css";
 export const Login = () => {
-    const [email, setEmail] = useState('');
-    const [pass, setPass] = useState('');
+    // const [email, setEmail] = useState('');
+    // const [pass, setPass] = useState('');
 
-    const handleSubmit = (e) => {
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     console.log(email);
+    // }
+    // const handleEmailChange = (e) =>{
+    //     setEmail(e.target.value)
+    //     console.log(email)
+    // }
+    // const handlePasswordChange = (e) =>{
+    //     setPass(e.target.value)
+    //     console.log(pass)
+    // }
+
+    const [inputs, setInputs] = useState({
+        username: "",
+        pw: "",
+      });
+    
+    const [err, setErr] = useState(null);
+
+    const navigate = useNavigate();
+
+    // const {currentUser} = useContext(AuthContext);
+    
+    const handleChange = (e) => {
+        setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    };
+    const { login } = useContext(AuthContext);
+    
+    const handleLogin = async (e) => {
         e.preventDefault();
-        console.log(email);
+        try {
+          await login(inputs);
+          navigate("/")
+    } catch (err) {
+          setErr(err.response.data);
     }
-    const handleEmailChange = (e) =>{
-        setEmail(e.target.value)
-        console.log(email)
-    }
-    const handlePasswordChange = (e) =>{
-        setPass(e.target.value)
-        console.log(pass)
-    }
+    };
     return (
 
         <div className="login-form flex items-center justify-center h-screen ">
@@ -25,14 +52,16 @@ export const Login = () => {
                 <form className="w-full max-w-sm">
                     <div className="mb-4">
                         <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="email">
-                            Email
+                            Username
                         </label>
                         <input
                             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id="email"
                             type="email"
-                            placeholder="Email"
-                            onChange = {handleEmailChange}
+                            placeholder="Username"
+                            name = "username"
+                            // onChange = {handleEmailChange}
+                            onChange = {handleChange}
                         />
                     </div>
                     <div className="mb-4">
@@ -44,13 +73,16 @@ export const Login = () => {
                             id="password"
                             type="password"
                             placeholder="Password"
-                            onChange = {handlePasswordChange}
+                            name = "pw"
+                            // onChange = {handlePasswordChange}
+                            onChange = {handleChange}
                         />
                     </div>
                     <div className="flex items-center justify-between">
                         <button
                             className="bg-green-500 hover:bg-green-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                             type="button"
+                            onClick={handleLogin}
                         >
                             Sign In
                         </button>

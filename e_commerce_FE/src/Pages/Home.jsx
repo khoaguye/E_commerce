@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { BsWindowSidebar } from "react-icons/bs";
-import Categories_bar from "../Components/Categories_bar";
 import Footer from "../Components/Footer";
 
 import Menu from "../Components/Menu";

@@ -5,8 +5,6 @@ import {Routes, Route} from 'react-router-dom'
 import Product from './Product'
 import Detail_product from './Detail_product'
 import Cart from './Cart'
-import Filter_bar from '../Components/Product/Filter_bar'
-import Product_manage from '../Components/Admin/Product_manage';
 import { Login } from '../Components/Login/Login'
 import { Register } from '../Components/Register/Register'
 import UserProf from '../Components/UserProfile/UserProf';

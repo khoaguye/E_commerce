@@ -1,8 +1,6 @@
 import React,{useContext} from 'react'
-import Footer from '../Components/Footer';
 import Header from "../Components/Header";
 import Product_detail from '../Components/Product/Product_detail';
-import ProductContext from "../Components/Product/ProductContext";
 function Detail_product() {
 
   return (

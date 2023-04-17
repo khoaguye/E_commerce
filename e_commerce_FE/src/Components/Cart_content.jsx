@@ -24,13 +24,13 @@ function Cart_content() {
 
   const cart = useSelector((state) => state.cart)
    console.log(cart)
-  function getSubTotalPrice(){
-    let total = 0
-  cart.forEach(item => {
-    total += item.prices
-  })
-  return total
-  }
+  // function getSubTotalPrice(){
+  //   let total = 0
+  // cart.forEach(item => {
+  //   total += item.prices
+  // })
+  // return total
+  // }
   
 
   const getTotal = () => {

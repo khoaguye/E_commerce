@@ -35,5 +35,4 @@ function Pages() {
     </ContextProvider>
   )
 }
-
 export default Pages

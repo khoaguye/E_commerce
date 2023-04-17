@@ -1,3 +1,4 @@
+
 import React,{useContext} from 'react'
 import Header from "../Components/Header";
 import Product_detail from '../Components/Product/Product_detail';
@@ -16,5 +17,6 @@ function Detail_product() {
     </>
   )
 }
+
 
 export default Detail_product

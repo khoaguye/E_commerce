@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useContext } from "react";
 import CategoryDropdown from "./CategoryDropdown"
 import {ProductContext} from './ProductContext'
@@ -139,4 +140,5 @@ function Filter_bar() {
 }
 
 export default Filter_bar;
+
  

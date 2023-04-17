@@ -1,3 +1,4 @@
+
 // route for each e
 import express from "express"
 const router = express.Router();
@@ -9,5 +10,6 @@ router.post("/addPromo", addPromo)
 router.put("/updatePromo", updatePromo)
 router.get("/getOneCode", getOneCode)
 router.get("/getCodeByCategory", getCodeByCategory)
+
 
 export default router

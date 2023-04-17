@@ -28,3 +28,4 @@ function Sale_manage() {
 }
 
 export default Sale_manage
+

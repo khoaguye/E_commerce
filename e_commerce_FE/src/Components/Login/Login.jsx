@@ -42,6 +42,7 @@ export const Login = () => {
           navigate("/")
     } catch (err) {
           setErr(err.response.data);
+        //   setErr("Example error message!");
     }
     };
     return (
@@ -86,6 +87,7 @@ export const Login = () => {
                         >
                             Sign In
                         </button>
+                        {err?<p color="red">{err}</p>:null}
                         <a
                             className="inline-block align-baseline font-bold text-sm text-green-900 hover:text-green-500"
                             href="#"

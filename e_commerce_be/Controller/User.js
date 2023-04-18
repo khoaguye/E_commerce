@@ -37,7 +37,7 @@ export const login = (req, res) => {
   
     db.query(q, [req.body.username], (err, data) => {
       if (err) return res.status(500).json(err);
-      if (data.length === 0) return res.status(404).json("Sahara : User not found!");
+      if (data.length === 0) return res.status(404).json("User not found");
   
       const checkPassword = bcrypt.compareSync(
         req.body.pw,
@@ -45,7 +45,7 @@ export const login = (req, res) => {
       );
   
       if (!checkPassword)
-        return res.status(400).json("Sahara : Wrong password or username!");
+        return res.status(400).json("Incorrect password");
   
       const token = jwt.sign({ id: data[0].id }, "secretkey", {expiresIn: "59m"});
   

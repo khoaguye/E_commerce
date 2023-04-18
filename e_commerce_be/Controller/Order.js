@@ -70,7 +70,6 @@ export const createOrder =(req, res) =>{
         req.body.date,
         req.body.orderStatus
     ]
-    
     const q = "INSERT INTO order_management (`uid`, `date`, `orderStatus`) VALUES (?)"
     db.query(q,[order_management_value], (error, results) =>{
         if(error){
@@ -88,7 +87,16 @@ export const createOrder =(req, res) =>{
                 if(error){
                     throw error;
                 }
-                else{
+
+                 else{
+                    // update the product amount
+                    req.body.cart.forEach(item => {
+                      const q = `UPDATE products SET amount = amount - ${item.quantity} WHERE id = ${item.productId}`;
+                      db.query(q, (error, results) => {
+                        if (error) throw error;
+                      });
+                    });
+
                     res.status(201).json({orderId})
                 }
             })

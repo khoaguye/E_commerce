@@ -33,6 +33,7 @@ const [content, setContent] = useState([]);
                 title = {items.title}
                 category = {items.category}
                 price= {items.price}
+                amount = {items.amount}
            />
            ))} 
         </div>

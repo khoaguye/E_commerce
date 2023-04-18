@@ -3,21 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
 import "./Login.css";
 export const Login = () => {
-    // const [email, setEmail] = useState('');
-    // const [pass, setPass] = useState('');
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     console.log(email);
-    // }
-    // const handleEmailChange = (e) =>{
-    //     setEmail(e.target.value)
-    //     console.log(email)
-    // }
-    // const handlePasswordChange = (e) =>{
-    //     setPass(e.target.value)
-    //     console.log(pass)
-    // }
 
     const [inputs, setInputs] = useState({
         username: "",
@@ -27,8 +12,6 @@ export const Login = () => {
     const [err, setErr] = useState(null);
 
     const navigate = useNavigate();
-
-    // const {currentUser} = useContext(AuthContext);
     
     const handleChange = (e) => {
         setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -42,7 +25,6 @@ export const Login = () => {
           navigate("/")
     } catch (err) {
           setErr(err.response.data);
-        //   setErr("Example error message!");
     }
     };
     return (
@@ -61,7 +43,6 @@ export const Login = () => {
                             type="email"
                             placeholder="Username"
                             name = "username"
-                            // onChange = {handleEmailChange}
                             onChange = {handleChange}
                         />
                     </div>
@@ -75,7 +56,6 @@ export const Login = () => {
                             type="password"
                             placeholder="Password"
                             name = "pw"
-                            // onChange = {handlePasswordChange}
                             onChange = {handleChange}
                         />
                     </div>

@@ -4,12 +4,6 @@ import "./Register.css";
 import axios from "axios";
 
 export const Register = () => {
-    // const [email, setEmail] = useState('');
-    // const [pass, setPass] = useState('');
-    // const [fname, setFName] = useState('');
-    // const [lname, setlName] = useState('');
-    // const [phonenum, setPhoneNum] = useState('');
-    // const [address, setAd] = useState('');
 
     const [inputs, setInputs] = useState({
         fname: "",
@@ -46,41 +40,6 @@ export const Register = () => {
         
     };
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     console.log(email);
-    // }
-
-    // const handleEmailChange = (e) => {
-    //     setEmail(e.target.value)
-    //     console.log(email)
-    // }
-    // const handlePasswordChange = (e) => {
-    //     setPass(e.target.value)
-    //     console.log(pass)
-    // }
-    // const handleFnameChange = (e) => {
-    //     setFName(e.target.value)
-    //     console.log(fname)
-    // }
-    // const handleLnameChange = (e) => {
-    //     setlName(e.target.value)
-    //     console.log(lname)
-    // }
-    // const handleAddressChange = (e) => {
-    //     setAd(e.target.value)
-    //     console.log(address)
-    // }
-    // const handlePhoneChange = (e) => {
-    //     setPhoneNum(e.target.value)
-    //     console.log(phonenum)
-    // }
-    // // starting change
-    // const handleUsernameChange = (e) => {
-    //     setPhoneNum(e.target.value)
-    //     console.log(phonenum)
-    // }
-    // // ending change
     return (
         <div className="login-form flex items-center justify-center h-screen  ">
             <div className="formm bg-light-grey flex flex-col gap-4 items-center justify-center w-[80%] md:w-[55%]  overflow-auto border border-black  py-2 rounded-md ">
@@ -99,7 +58,6 @@ export const Register = () => {
                             placeholder="First name"
                             name ="fname"
                             onChange={handleChange}
-                            // onChange={handleFnameChange}
                         />
                     </div>
                     <div className="mb-4 ">
@@ -113,7 +71,6 @@ export const Register = () => {
                             placeholder="Last name"
                             name ="lname"
                             onChange={handleChange}
-                            // onChange={handleLnameChange}
                         />
                     </div>
 
@@ -128,10 +85,8 @@ export const Register = () => {
                             placeholder="Email"
                             name ="email"
                             onChange={handleChange}
-                            // onChange={handleEmailChange}
                         />
                     </div>
-                   {/* start change */}
                     <div className="mb-4">
                         <label className="block text-gray-700 font-bold mb-2 text-green-900 " htmlFor="username">
                             Username
@@ -143,10 +98,8 @@ export const Register = () => {
                             placeholder="username"
                             name ="username"
                             onChange={handleChange}
-                            // onChange={handleUsernameChange}
                         />
                     </div> 
-                    {/* end change */}
                     </form>
                     </div>
                     <div>
@@ -163,7 +116,6 @@ export const Register = () => {
                             placeholder="Password"
                             name = "pw"
                             onChange={handleChange}
-                            // onChange={handleAddressChange}
                         />
                     </div>
 
@@ -178,7 +130,6 @@ export const Register = () => {
                             placeholder="Address"
                             name = "address"
                             onChange={handleChange}
-                            // onChange={handlePhoneChange}
                         />
                     </div>
                     <div className="mb-4">
@@ -193,16 +144,8 @@ export const Register = () => {
                             name = "phone"
                             onChange={handleChange}
                             
-                            // onChange={handlePasswordChange}
                         />
                     </div>
-                    {/* <button
-                            className="w-[70%] bg-green-500 hover:bg-green-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                            type="button"
-                            onClick={handleClick}
-                        >
-                            Register
-                        </button> */}
                 </form>
                 </div>
                 </div>

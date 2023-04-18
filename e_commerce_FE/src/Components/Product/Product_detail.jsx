@@ -34,13 +34,28 @@ function Product_detail() {
 //console.log(content)
 
 const dispatch = useDispatch() 
+// const handleAddToCart = (event) => {
+//   //const { id, title, price, images } = content;
+//   //const img = images[0];
+//  dispatch(addToCart({ detailcontent, quantity: count}));
+//  console.log(detailcontent)
+//  //console.log(id, title, images)
+// }
 const handleAddToCart = (event) => {
-  //const { id, title, price, images } = content;
-  //const img = images[0];
- dispatch(addToCart({ detailcontent, quantity: count}));
- console.log(detailcontent)
- //console.log(id, title, images)
+  event.preventDefault();
+  console.log(count)
+  const item = detailcontent.map ((value) => ({
+    id: value.id,
+    title: value.title,
+    price: value.price,
+    img: value.images,
+    category: value.category,
+    quantity: count
+  }));
+  dispatch(addToCart(...item));
+  console.log(item)
 }
+
   return (
     <div className="mt-4">
       {detailcontent.map((item) =>(

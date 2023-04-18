@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { TiShoppingCart } from 'react-icons/ti'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import Footer from '../Footer';
 import pyramid from './images/pyramid.png'
+import { AuthContext } from "../../context/authContext";
 
 function UserProf() {
 
   const cart = useSelector((state) => state.cart)
+  const { currentUser } = useContext(AuthContext);
   const getTotalQuantity = () => {
     let total = 0
     cart.forEach(item => {
@@ -72,32 +74,32 @@ function UserProf() {
 
             <div class="flex justify-center h-8 w-auto mx-auto border-b-2  border-neutral-800">
               <p class="">Firstname:</p>
-              <p class="text-center px-4 ">Johnathan</p>
+              <p class="text-center px-4 ">{currentUser?.fname}</p>
 
             </div>
 
             <div class="flex justify-center h-8 w-auto mx-auto border-b-2  border-neutral-800">
               <p class="">Lastname:</p>
-              <p class="text-center px-4 ">Dough</p>
+              <p class="text-center px-4 ">{currentUser?.lname}</p>
 
             </div>
 
             <div class="flex justify-center text-lg sm:text-xl   h-8 w-auto mx-auto border-b-2  border-neutral-800">
               <p class="">Address:</p>
-              <p class="w-56 sm:w-64 px-1 ">1234 random st. City State</p>
+              <p class="w-56 sm:w-64 px-1 ">{currentUser?.address}</p>
 
 
             </div>
 
             <div class="flex justify-center h-8 w-auto mx-auto border-b-2  border-neutral-800">
               <p class="">Email:</p>
-              <p class="text-center px-4 ">needdough@gmail.com</p>
+              <p class="text-center px-4 ">{currentUser?.email}</p>
 
             </div>
 
             <div class="flex justify-center mx-auto h-8 w-auto border-b-2  border-neutral-800">
               <p class="w-24">Phone:</p>
-              <p class="w-48 px-0 ">+1(210)-234-8765</p>
+              <p class="w-48 px-0 ">{currentUser?.phone}</p>
 
 
 

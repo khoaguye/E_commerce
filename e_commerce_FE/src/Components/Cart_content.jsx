@@ -1,17 +1,19 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Cart_content_card from "./Cart_content_card";
 import DeliveryMethod from "./DeliverryMethod";
 import { useSelector } from 'react-redux';
 import {Link} from 'react-router-dom';
 import axios from "axios";
-import {updatePrice} from '../Redux/cartSlice';
+import {updatePrice, clearCart} from '../Redux/cartSlice';
 import { useDispatch } from 'react-redux';
+import { AuthContext } from "../context/authContext";
 function Cart_content() {
   const [selectedOption, setSelectedOption] = useState("credit-card");
   const [promoteCode, setPromoteCode] = useState([]); 
+  const [annouce, setAnnouce ] = useState("")
  // const [promoteText, setPromoteText] = useState("");
-
+ const { currentUser } = useContext(AuthContext);
   const dispatch = useDispatch() 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
@@ -59,8 +61,9 @@ const minutes = now.getMinutes().toString().padStart(2, '0');
 const seconds = now.getSeconds().toString().padStart(2, '0');
 const datetime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 console.log(datetime);
+console.log(currentUser)
   const orderContain = {
-    uid : "8",
+    uid : currentUser?.id,
     date: datetime,
     orderStatus: "Shiped",
     cart: cart.map( item => ({productId: item.id, quantity: item.quantity}))
@@ -77,9 +80,13 @@ console.log(datetime);
       });
       const data = await response.json();
       console.log(data);
+      setAnnouce("Your Order is already placed")
+      dispatch(clearCart());
     } catch (error) {
       console.error(error);
+      setAnnouce("Error with payment")
     }
+   
   };
 
     
@@ -313,6 +320,8 @@ console.log(datetime);
         <Link to = "/product">
         <button className = "ml-2 mt-4 bg-green-600 hover:bg-green-900 text-white font-bold py-2 px-4 rounded"> Continue Shopping</button>
         </Link>
+
+        <p className="text-red-600 font-bold my-4 ">{annouce}</p>
       </div>
     </div>
   );

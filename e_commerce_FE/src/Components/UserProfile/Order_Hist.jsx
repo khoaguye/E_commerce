@@ -1,14 +1,16 @@
-import React, {  useState, useEffect } from "react";
+import React, {  useState, useEffect, useContext } from "react";
 import { TiShoppingCart } from 'react-icons/ti'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import Footer from '../Footer';
 import pyramid from './images/pyramid.png'
 import OrderHistoryCard from "./OrderHistoryCard";
+import { AuthContext } from "../../context/authContext";
 import axios from "axios";
 function OrderHist() {
 
   const [orderHistory, setOrderHistory] = useState([])
+  const { currentUser } = useContext(AuthContext);
   const cart = useSelector((state) => state.cart)
   const getTotalQuantity = () => {
     let total = 0
@@ -21,7 +23,7 @@ function OrderHist() {
   useEffect (() => {
     async function fetchOrderHistory (){
       try{
-        const response = await axios.post("/order/orderByUid",{ uid: 8 })
+        const response = await axios.post("/order/orderByUid",{ uid: currentUser?.id })
         console.log(response.data)
         setOrderHistory(response.data)
         console.log(orderHistory)

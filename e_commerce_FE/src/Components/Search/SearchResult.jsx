@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import {ProductContext} from '../Product/ProductContext';
+import { Link } from 'react-router-dom';
 
 function SearchResult({ searchValue }) {
   const { content, setContent } = useContext(ProductContext);
@@ -25,6 +26,7 @@ function SearchResult({ searchValue }) {
         <p>No results found</p>
       ) : (
         searchContent.map((item) => (
+          <Link to = {"/product/" + item.id} >
           <div
             key={item.id}
             className="bg-white mt-4 p-3 border w-full h-full md:h-1/2 object-cover"
@@ -45,6 +47,7 @@ function SearchResult({ searchValue }) {
               </div>
             </div>
           </div>
+          </Link>
         ))
       )}
     </div>
